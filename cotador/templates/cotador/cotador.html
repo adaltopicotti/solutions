@@ -4,18 +4,21 @@
 {% block content %}
   <div class="col-xs-3 col-md-2">
     <p>Hello</p>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">R$/SC</span>
-      <input type="text" class="form-control" placeholder="R$ 30,00" aria-describedby="basic-addon1">
-    </div>
   </div>
   <h1>New post</h1>
-  <form method="POST" class="post-form">{% csrf_token %}
-      {{ form.as_p }}
+  <form method="POST" name="cotador" class="post-form">{% csrf_token %}
+    <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">R$/SC</span>
-        <input type="text" class="form-control" placeholder="R$ 30,00" aria-describedby="basic-addon1">
+        <input type="text" name="price" class="form-control" placeholder="R$ 30,00" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">HA</span>
+        <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1">
       </div>
       <button type="submit" class="save btn btn-default">Guardar</button>
   </form>
+  <p>Custo total: {{total_cost}}</p>
+  <p>Subvenção Federal: {{subv_fed}}</p>
+  <p>Custo Final: {{final_cost}}</p>
 {% endblock %}
