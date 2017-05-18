@@ -6,7 +6,7 @@ def quotation(request):
           price = request.POST['price']
           area = request.POST['area']
           result = calc(float(price), float(area))
-     return render(request, 'cotador/cotador.html', {'total_cost': reprresult[0])})
+     return render(request, 'cotador/cotador.html', {'total_cost': repr(result[0])})
 
 
 def calc(price, area):
