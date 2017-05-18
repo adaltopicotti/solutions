@@ -19,9 +19,24 @@
       <button type="submit" class="save btn btn-default">Guardar</button>
   </form>
   {% if is_total %}
-  <p>IS total: R$ {{is_total}}</p>
-  <p>Custo total: R$ {{total_cost}}</p>
-  <p>Subvenção Federal: R$ {{subv_fed}}</p>
-  <p>Custo Final: R$ {{final_cost}}</p>
+  <table>
+    <tr>
+      <td>IS total:</td>
+      <td>R$ {{is_total}}</td>
+    </tr>
+    <tr>
+      <td>Custo total: </td>
+      <td>R$ {{total_cost}}</td>
+    </tr>
+    <tr>
+      <td>Subvenção Federal: </td>
+      <td>R$ {{subv_fed}}</td>
+    </tr>
+    <tr>
+      <td>Custo Final: </td>
+      <td>R$ {{final_cost}}</td>
+    </tr>
+  </table>
+
   {% endif %}
 {% endblock %}
