@@ -13,8 +13,8 @@ def quotation(request):
 
 
 def calc(price, area):
-     is_total = ((price * 24.33) *area)
-     total_cost = is_total * 0.165
-     subv_fed = total_cost * 0.45
-     final_cost = total_cost - subv_fed
+     is_total = round(((price * 24.33) *area),2)
+     total_cost = round(is_total * 0.165,2)
+     subv_fed = round(total_cost * 0.45,2)
+     final_cost = round(total_cost - subv_fed,2)
      return [total_cost, final_cost, subv_fed, is_total]
