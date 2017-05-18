@@ -18,8 +18,10 @@
       </div>
       <button type="submit" class="save btn btn-default">Guardar</button>
   </form>
+  {% if is_total %}
   <p>IS total: R$ {{is_total}}</p>
   <p>Custo total: R$ {{total_cost}}</p>
   <p>Subvenção Federal: R$ {{subv_fed}}</p>
   <p>Custo Final: R$ {{final_cost}}</p>
+  {% endif %}
 {% endblock %}
