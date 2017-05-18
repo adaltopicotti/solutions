@@ -12,6 +12,10 @@
   <h1>New post</h1>
   <form method="POST" class="post-form">{% csrf_token %}
       {{ form.as_p }}
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">R$/SC</span>
+        <input type="text" class="form-control" placeholder="R$ 30,00" aria-describedby="basic-addon1">
+      </div>
       <button type="submit" class="save btn btn-default">Guardar</button>
   </form>
 {% endblock %}
