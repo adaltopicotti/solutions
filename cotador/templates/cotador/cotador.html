@@ -2,22 +2,47 @@
 {% extends 'cotador/base.html' %}
 
 {% block content %}
-  <div class="col-xs-3 col-md-2">
-    <p>Hello</p>
+
+  <h1>Calculo</h1>
+  <div class="container">
+    <form method="POST" name="cotador" class="post-form">{% csrf_token %}
+      <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="lbl_municipio">Município</label>
+            <select class="form-control">
+              <option>Abatiá</option>
+              <option>Apucarana</option>
+              <option>Cambé</option>
+              <option>Maringá</option>
+              <option>Ponta Grossa</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="lbl_price">Preço da Saca</label>
+            <div class="input-group">
+              <span class="input-group-addon">R$</span>
+              <input name="price" type="text" class="form-control" aria-label="Amount">
+              <span class="input-group-addon">,00</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lbl_area">Área</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">HA</span>
+              <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default">Calcular</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <h1>New post</h1>
-  <form method="POST" name="cotador" class="post-form">{% csrf_token %}
-    <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">R$/SC</span>
-        <input type="text" name="price" class="form-control" placeholder="R$ 30,00" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">HA</span>
-        <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1">
-      </div>
-      <button type="submit" class="save btn btn-default">Guardar</button>
-  </form>
   {% if is_total %}
   <table>
     <tr>
