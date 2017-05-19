@@ -9,16 +9,15 @@
   <div class="container">
     <form method="POST" name="cotador" class="post-form">{% csrf_token %}
       <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
-      <div class="row">
+       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
             <label for="lbl_municipio">Município</label>
             <select class="form-control">
-              <option>Abatiá</option>
-              <option>Apucarana</option>
-              <option>Cambé</option>
-              <option>Maringá</option>
-              <option>Ponta Grossa</option>
+              {% for city in cities %}
+              <option>{{city.city_name}}</option>
+              {% endfor %}
+
             </select>
           </div>
         </div>
@@ -44,22 +43,6 @@
         </div>
       </div>
     </form>
-    <p>{{cities}}</p>
-    <p>aaaaaaaaaaaaaa</p>
-    <p>{{cityes.city_name}}</p>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label for="lbl_municipio">Município</label>
-        <select class="form-control">
-          {% for city in cities %}
-          <option>{{city.city_name}}</option>
-          {% endfor %}
-
-        </select>
-      </div>
-    </div>
   </div>
   {% if is_total %}
   <table>
