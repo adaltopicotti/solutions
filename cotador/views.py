@@ -22,5 +22,6 @@ def calc(price, area):
 
 
 def city_list(request):
-    city = City.objects.all()
-    return render(request, 'cotador/cotador.html', {'cities': city})
+     city = City.objects.all()
+     #posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+     return render(request, 'cotador/cotador.html', {'cities': city})
