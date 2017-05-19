@@ -22,5 +22,5 @@ def calc(price, area):
 
 
 def city_list(request):
-    city = City.objects.get(id=2)
-    return render(request, 'cotador/cotador.html', {'cities': 'city'})
+    city = City.objects.all()
+    return render(request, 'cotador/cotador.html', {'cities': city})
