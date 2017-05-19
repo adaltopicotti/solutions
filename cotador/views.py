@@ -10,7 +10,9 @@ def quotation(request):
                                                          'final_cost': repr(result[1]),
                                                          'subv_fed': repr(result[2]),
                                                          'is_total': repr(result[3])})
-     return render(request, 'cotador/cotador.html', {})
+     
+     cities = City.objects.all()
+     return render(request, 'cotador/cotador.html', {'cities': cities})
 
 
 def calc(price, area):
