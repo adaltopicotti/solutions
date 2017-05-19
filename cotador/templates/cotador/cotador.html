@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% block city %}
+{% endblock city %}
   <h1>Calculo</h1>
   <div class="container">
     <form method="POST" name="cotador" class="post-form">{% csrf_token %}
@@ -42,6 +44,20 @@
         </div>
       </div>
     </form>
+    {{cities}}
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="lbl_municipio">Município</label>
+        <select class="form-control">
+          {% for city in cities %}
+          <option>{{city}}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+    </div>
   </div>
   {% if is_total %}
   <table>

@@ -1,0 +1,18 @@
+{% extends 'cotador/base.html' %}
+
+{% block city %}
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="lbl_municipio">Município</label>
+        <select class="form-control">
+          {% for city in cities %}
+          <option>{{city.city_name}}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+    </div>
+  </div>
+
+{% endblock city %}

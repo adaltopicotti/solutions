@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import City
 # Create your views here.
 def quotation(request):
      if request.method == "POST":
@@ -19,3 +19,8 @@ def calc(price, area):
      subv_fed = round(total_cost * 0.45,2)
      final_cost = round(total_cost - subv_fed,2)
      return [total_cost, final_cost, subv_fed, is_total]
+
+
+def city_list(request):
+    city = City.objects.get(id=2)
+    return render(request, 'cotador/cotador.html', {'cities': 'city'})
