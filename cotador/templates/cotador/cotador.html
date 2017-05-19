@@ -44,7 +44,9 @@
         </div>
       </div>
     </form>
-    {{cities}}
+    <p>{{cities}}</p>
+    <p>aaaaaaaaaaaaaa</p>
+    <p>{{cityes.city_name}}</p>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -52,7 +54,7 @@
         <label for="lbl_municipio">Município</label>
         <select class="form-control">
           {% for city in cities %}
-          <option>{{city}}</option>
+          <option>{{city.city_name}}</option>
           {% endfor %}
 
         </select>
