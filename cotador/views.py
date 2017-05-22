@@ -27,4 +27,4 @@ def calc(price, area, city):
     total_cost = round(is_total * 0.165,2)
     subv_fed = round(total_cost * 0.45,2)
     final_cost = round(total_cost - subv_fed,2)
-    return [total_cost, final_cost, subv_fed, is_total, prod_esp]
+    return [total_cost, final_cost, subv_fed, is_total, prod_esp.prod_esp]
