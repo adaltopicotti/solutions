@@ -23,7 +23,7 @@ def quotation(request):
 
 def calc(price, area, city):
     prod_esp = Prod_Esp.objects.get(id=city)
-    sc = prod_esp * 0.6
+    sc = float(prod_esp) * 0.6
     is_total = round(((price * sc) *area),2)
     total_cost = round(is_total * 0.165,2)
     subv_fed = round(total_cost * 0.45,2)
