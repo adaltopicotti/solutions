@@ -40,7 +40,7 @@ class Prod_Esp(models.Model):
     prod_esp = models.FloatField()
     
     def __str__(self):
-        return self.city.name 
+        return self.prod_esp 
 
 class Culture(models.Model):
     name = models.CharField(max_length=50)
