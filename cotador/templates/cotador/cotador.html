@@ -7,6 +7,8 @@
 {% endblock city %}
   <h1>Calculo</h1>
   <div class="container">
+    <div class="row">
+      <div class="col-md-5">
     <form method="POST" name="cotador" class="post-form">{% csrf_token %}
       <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
        <div class="row">
@@ -42,45 +44,47 @@
         </div>
       </div>
     </form>
-  </div>
-  {% if is_total %}
-  <div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Cotação</h3>
       </div>
-      <div class="panel-body">
-        <table class="table">
-          <tr>
-            <td>Municipio:</td>
-            <td> {{city}}</td>
-          </tr>
-          <tr>
-            <td>Prod. Esperada:</td>
-            <td> {{prod_esp}} Kg/ha</td>
-          </tr>
-           <tr>
-            <td>Prod. Segurada:</td>
-            <td> {{prod_seg}} Kg/ha</td>
-          </tr>
-          <tr>
-            <td>IS total:</td>
-            <td>R$ {{is_total}}</td>
-          </tr>
-          <tr>
-            <td>Custo total: </td>
-            <td>R$ {{total_cost}}</td>
-          </tr>
-          <tr>
-            <td>Subvenção Federal: </td>
-            <td>R$ {{subv_fed}}</td>
-          </tr>
-          <tr>
-            <td>Custo Final: </td>
-            <td>R$ {{final_cost}}</td>
-          </tr>
-        </table>
+    {% if is_total %}
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Cotação</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <td>Municipio:</td>
+              <td> {{city}}</td>
+            </tr>
+            <tr>
+              <td>Prod. Esperada:</td>
+              <td> {{prod_esp}} Kg/ha</td>
+            </tr>
+             <tr>
+              <td>Prod. Segurada:</td>
+              <td> {{prod_seg}} Kg/ha</td>
+            </tr>
+            <tr>
+              <td>IS total:</td>
+              <td>R$ {{is_total}}</td>
+            </tr>
+            <tr>
+              <td>Custo total: </td>
+              <td>R$ {{total_cost}}</td>
+            </tr>
+            <tr>
+              <td>Subvenção Federal: </td>
+              <td>R$ {{subv_fed}}</td>
+            </tr>
+            <tr>
+              <td>Custo Final: </td>
+              <td>R$ {{final_cost}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
+    </div>
     </div>
   </div>
   {% endif %}
