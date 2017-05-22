@@ -11,7 +11,7 @@ class Uf(models.Model):
 
 
 class City(models.Model):
-    uf = models.ForeignKey('cotador.Uf')
+    #uf = models.ForeignKey('cotador.Uf')
     name = models.CharField(max_length=50)
     def __str__(self):
         return self.name
