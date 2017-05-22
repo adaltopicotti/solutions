@@ -35,6 +35,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Prod_Esp(models.Model):
+    city = models.ForeignKey('cotador.City')
+    prod_esp = models.FloatField()
+    
+    def __str__(self):
+        return self.city.name 
 
 class Culture(models.Model):
     name = models.CharField(max_length=50)
