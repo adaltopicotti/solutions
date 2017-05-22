@@ -26,7 +26,7 @@ class Safra(models.Model):
             blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.safra_inf
 
 
 class Product(models.Model):
@@ -37,7 +37,7 @@ class Product(models.Model):
 
 
 class Culture(models.Model):
-    culture_name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -51,3 +51,7 @@ class Tax(models.Model):
     nc_65 = models.FloatField()
     nc_70 = models.FloatField()
     active = models.BooleanField(default=False)
+
+    def __str__(self):
+
+        return self.safra.safra_inf#, self.city.name
