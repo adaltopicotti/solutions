@@ -44,32 +44,33 @@
     </form>
   </div>
   {% if is_total %}
-  <table>
-    <tr>
-      <td>Municipio:</td>
-      <td> {{city}}</td>
-    </tr>
-    <tr>
-      <td>Prod. Esperada:</td>
-      <td> {{prod_esp}}</td>
-    </tr>
-    <tr>
-      <td>IS total:</td>
-      <td>R$ {{is_total}}</td>
-    </tr>
-    <tr>
-      <td>Custo total: </td>
-      <td>R$ {{total_cost}}</td>
-    </tr>
-    <tr>
-      <td>Subvenção Federal: </td>
-      <td>R$ {{subv_fed}}</td>
-    </tr>
-    <tr>
-      <td>Custo Final: </td>
-      <td>R$ {{final_cost}}</td>
-    </tr>
-  </table>
-
+  <div class="panel panel-primary">
+    <table>
+      <tr>
+        <td>Municipio:</td>
+        <td> {{city}}</td>
+      </tr>
+      <tr>
+        <td>Prod. Esperada:</td>
+        <td> {{prod_esp}}</td>
+      </tr>
+      <tr>
+        <td>IS total:</td>
+        <td>R$ {{is_total}}</td>
+      </tr>
+      <tr>
+        <td>Custo total: </td>
+        <td>R$ {{total_cost}}</td>
+      </tr>
+      <tr>
+        <td>Subvenção Federal: </td>
+        <td>R$ {{subv_fed}}</td>
+      </tr>
+      <tr>
+        <td>Custo Final: </td>
+        <td>R$ {{final_cost}}</td>
+      </tr>
+    </table>
+  </div>
   {% endif %}
 {% endblock %}
