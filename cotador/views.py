@@ -15,7 +15,8 @@ def quotation(request):
                                                     'subv_fed': repr(result[2]),
                                                     'is_total': repr(result[3]),
                                                     'city': city_sel,
-                                                    'prod_esp': result[4]})
+                                                    'prod_esp': result[4],
+                                                    'prod_seg': result[5]})
 
 
     return render(request, 'cotador/cotador.html', {'cities': cities})
@@ -23,9 +24,10 @@ def quotation(request):
 
 def calc(price, area, city):
     prod_esp = Prod_Esp.objects.get(id=city)
-    sc = (prod_esp.prod_esp * 0.6)/60
+    prod_seg = (prod_esp.prod_esp * 0.6)
+    sc = prod_esp.seg/60
     is_total = round(((price * sc) *area),2)
     total_cost = round(is_total * 0.165,2)
     subv_fed = round(total_cost * 0.45,2)
     final_cost = round(total_cost - subv_fed,2)
-    return [total_cost, final_cost, subv_fed, is_total, prod_esp.prod_esp]
+    return [total_cost, final_cost, subv_fed, is_total, prod_esp.prod_esp, prod_seg]
