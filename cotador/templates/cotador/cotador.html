@@ -44,37 +44,39 @@
     </form>
   </div>
   {% if is_total %}
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Panel title</h3>
-    </div>
-    <div class="panel-body">
-      <table>
-        <tr>
-          <td>Municipio:</td>
-          <td> {{city}}</td>
-        </tr>
-        <tr>
-          <td>Prod. Esperada:</td>
-          <td> {{prod_esp}}</td>
-        </tr>
-        <tr>
-          <td>IS total:</td>
-          <td>R$ {{is_total}}</td>
-        </tr>
-        <tr>
-          <td>Custo total: </td>
-          <td>R$ {{total_cost}}</td>
-        </tr>
-        <tr>
-          <td>Subvenção Federal: </td>
-          <td>R$ {{subv_fed}}</td>
-        </tr>
-        <tr>
-          <td>Custo Final: </td>
-          <td>R$ {{final_cost}}</td>
-        </tr>
-      </table>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <td>Municipio:</td>
+            <td> {{city}}</td>
+          </tr>
+          <tr>
+            <td>Prod. Esperada:</td>
+            <td> {{prod_esp}}</td>
+          </tr>
+          <tr>
+            <td>IS total:</td>
+            <td>R$ {{is_total}}</td>
+          </tr>
+          <tr>
+            <td>Custo total: </td>
+            <td>R$ {{total_cost}}</td>
+          </tr>
+          <tr>
+            <td>Subvenção Federal: </td>
+            <td>R$ {{subv_fed}}</td>
+          </tr>
+          <tr>
+            <td>Custo Final: </td>
+            <td>R$ {{final_cost}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   {% endif %}
