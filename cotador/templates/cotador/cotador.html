@@ -36,7 +36,7 @@
             <label for="lbl_municipio">Município</label>
             <select name="city" class="form-control">
               {% for city in cities %}
-              {% if {{city.id}} == re_select %}
+              {% if {{city.name}} == re_select %}
                 <option value="{{city.id}}" selected>{{city.name}}</option>
               {% else %}
               <option value="{{city.id}}">{{city.name}}</option>
