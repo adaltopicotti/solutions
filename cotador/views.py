@@ -26,7 +26,7 @@ def quotation(request):
             'city': city_sel,
             'price': price,
             'area': area,
-            're_select':city})
+            're_select':city*1})
 
 
     return render(request, 'cotador/cotador.html', {
