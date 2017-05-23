@@ -24,20 +24,21 @@ class Safra(models.Model):
             blank=True, null=True)
     safra_end = models.DateTimeField(
             blank=True, null=True)
-
+    active = models.BooleanField(default=False)
     def __str__(self):
         return self.safra_inf
 
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
-
+    safra = models.ForeignKey('cotador.Safra')
     def __str__(self):
         return self.name
 
 class Prod_Esp(models.Model):
+    product = models.ForeignKey('cotador.Product')
     city = models.ForeignKey('cotador.City')
-    prod_esp = models.FloatField()
+    value = models.FloatField()
 
     def __str__(self):
         return self.city.name

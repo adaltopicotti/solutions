@@ -13,6 +13,25 @@
       <p> Abatía - 24,33 SC/ha - Tax 16,5%</p>
        <div class="row">
         <div class="col-md-10">
+          <!-- PRODUTO -->
+          <div class="form-group">
+            <label for="lbl_product">Produto:</label>
+            <select name="product" class="form-control">
+              {% for product in products %}
+              <option value="{{city.id}}">{{product.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- CULTURA
+          <div class="form-group">
+            <label for="lbl_culture">Cultura:</label>
+            <select name="product" class="form-control">
+              {% for culture in cultures %}
+              <option value="{{city.id}}">{{culture.name}}</option>
+              {% endfor %}
+            </select>
+          </div>-->
+          <!-- MUNICIPIO -->
           <div class="form-group">
             <label for="lbl_municipio">Município</label>
             <select name="city" class="form-control">
