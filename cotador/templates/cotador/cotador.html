@@ -18,11 +18,7 @@
             <label for="lbl_product">Produto:</label>
             <select name="product" class="form-control">
               {% for product in products %}
-              {% if re_select == {{city.id}} %}
-              <option value="{{city.id}}" selected>{{product.name}}</option>
-              {% if else %}
               <option value="{{city.id}}">{{product.name}}</option>
-              {% endif %}
               {% endfor %}
             </select>
           </div>
@@ -40,7 +36,11 @@
             <label for="lbl_municipio">Município</label>
             <select name="city" class="form-control">
               {% for city in cities %}
-              <option value="{{city.id}}" {{re_select}}>{{city.name}}</option>
+              {% if re_select == {{city.id}} %}
+                <option value="{{city.id}}" selected>{{product.name}}</option>
+              {% else %}
+              <option value="{{city.id}}">{{city.name}}</option>
+              {% endif %}
               {% endfor %}
             </select>
           </div>
