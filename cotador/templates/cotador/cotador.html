@@ -18,7 +18,11 @@
             <label for="lbl_product">Produto:</label>
             <select name="product" class="form-control">
               {% for product in products %}
-              <option value="{{city.id}}" {{re_select}}>{{product.name}}</option>
+              {% if re_select = {{city.id}} %}
+              <option value="{{city.id}}" selected>{{product.name}}</option>
+              {% if else %}
+              <option value="{{city.id}}">{{product.name}}</option>
+              {% endif %}
               {% endfor %}
             </select>
           </div>
