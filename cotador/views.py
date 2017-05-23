@@ -7,21 +7,23 @@ def quotation(request):
     if request.method == "POST":
         price = request.POST['price']
         area = request.POST['area']
-        culture = request.POST['culture']
+        #culture = request.POST['culture']
         #product = request.POST['product']
         city = request.POST['city']
         result = calc(float(price), float(area), city)
         #safra_sel = Safra.objects.get(culture_id=culture, active=1)
         #product_sel = Product.objects.get(culture_id=culture)
         city_sel = City.objects.get(id=city)
-        return render(request, 'cotador/cotador.html', {'cities': cities,
-                                                    'total_cost': repr(result[0]),
-                                                    'final_cost': repr(result[1]),
-                                                    'subv_fed': repr(result[2]),
-                                                    'is_total': repr(result[3]),
-                                                    'city': city_sel,
-                                                    'prod_esp': result[4],
-                                                    'prod_seg': result[5]})
+        return render(request, 'cotador/cotador.html', {
+            'products': products,
+            'cities': cities,
+            'total_cost': repr(result[0]),
+            'final_cost': repr(result[1]),
+            'subv_fed': repr(result[2]),
+            'is_total': repr(result[3]),
+            'city': city_sel,
+            'prod_esp': result[4],
+            'prod_seg': result[5]})
 
 
     return render(request, 'cotador/cotador.html', {
