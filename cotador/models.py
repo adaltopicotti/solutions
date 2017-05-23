@@ -32,6 +32,7 @@ class Safra(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50)
     safra = models.ForeignKey('cotador.Safra')
+    active = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
@@ -52,7 +53,6 @@ class Culture(models.Model):
 
 class Tax(models.Model):
     product = models.ForeignKey('cotador.Product')
-    safra = models.ForeignKey('cotador.Safra')
     city = models.ForeignKey('cotador.City')
     nc_60 = models.FloatField()
     nc_65 = models.FloatField()
