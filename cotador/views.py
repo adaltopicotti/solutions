@@ -21,9 +21,11 @@ def quotation(request):
             'final_cost': repr(result[1]),
             'subv_fed': repr(result[2]),
             'is_total': repr(result[3]),
-            'city': city_sel,
             'prod_esp': result[4],
-            'prod_seg': result[5]})
+            'prod_seg': result[5],
+            'city': city_sel,
+            'price': price,
+            'area': area}
 
 
     return render(request, 'cotador/cotador.html', {
