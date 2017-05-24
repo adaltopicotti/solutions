@@ -41,7 +41,7 @@ def quotation(request):
 
 def calc(price, area, city, product, nc):
     prod_esp = Prod_Esp.objects.get(city_id=city, product_id=product)
-    tax_sel = Tax.objects.get(city_id=city, product_id=product)
+    tax_sel = Tax.objects.get(city_id=city)
     x = nc
     if x == 1:
         tax = tax_sel.nc_60
