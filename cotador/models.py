@@ -54,7 +54,7 @@ class Culture(models.Model):
 class Tax(models.Model):
     product = models.ForeignKey('cotador.Product')
     city = models.ForeignKey('cotador.City')
-    tax_inf = str(self.product) + " - " + str(self.city)
+    tax_inf = str(product) + " - " + str(city)
     nc_60 = models.FloatField()
     nc_65 = models.FloatField()
     nc_70 = models.FloatField()
