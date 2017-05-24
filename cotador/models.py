@@ -54,13 +54,14 @@ class Culture(models.Model):
 class Tax(models.Model):
     product = models.ForeignKey('cotador.Product')
     city = models.ForeignKey('cotador.City')
-    tax_inf = str(product) + " - " + str(city)
+    
     nc_60 = models.FloatField()
     nc_65 = models.FloatField()
     nc_70 = models.FloatField()
     active = models.BooleanField(default=False)
 
     def __str__(self):
+        tax_inf = str(self.product) + " - " + str(self.city)
         return self.tax_inf
 
 class Lvl_Cob(models.Model):
