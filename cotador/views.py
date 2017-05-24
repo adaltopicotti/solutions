@@ -40,16 +40,17 @@ def quotation(request):
 
 def calc(price, area, city, product, nc):
     prod_esp = Prod_Esp.objects.get(city_id=city, product_id=product)
-    tax = Tax.objects.get(city_id=city, product_id=product)
+
     prod_seg = round((prod_esp.value) * 0.6,2)
     sc = prod_seg/60
     is_total = round(((price * sc) *area),2)
-    total_cost = round(is_total * float(nc_f(nc, tax)),2)#round(is_total * 0.165,2)
+    total_cost = round(is_total * nc_f(nc, tax),2)#round(is_total * 0.165,2)
     subv_fed = round(total_cost * 0.45,2)
     final_cost = round(total_cost - subv_fed,2)
-    return [total_cost, final_cost, subv_fed, is_total, prod_esp.value, float(nc_f(nc, tax))]
+    return [total_cost, final_cost, subv_fed, is_total, prod_esp.value, nc_f(nc, tax)]
 
-def nc_f(x, tax):
+def nc_f(x, tax, city, product):
+    tax = Tax.objects.get(city_id=city, product_id=product)
     if x == 1:
         return tax.nc_60
         # Do the thing
