@@ -41,22 +41,20 @@ def quotation(request):
 
 def calc(price, area, city, product, nc):
     prod_esp = Prod_Esp.objects.get(city_id=city, product_id=product)
-
+    tax_sel = Tax.objects.get(city_id=city, product_id=product)
+    x = nc
+    if x == 1:
+        tax = tax_sel.nc_60
+        # Do the thing
+    elif x == 2:
+        tax = tax_sel.nc_65
+    # Do the other thing
+    else:
+        tax = tax_sel.nc_70
     prod_seg = round((prod_esp.value) * 0.6,2)
     sc = prod_seg/60
     is_total = round(((price * sc) *area),2)
     total_cost = round((is_total * nc_f(nc, city, product)),2)#round(is_total * 0.165,2)
     subv_fed = round(total_cost * 0.45,2)
     final_cost = round(total_cost - subv_fed,2)
-    return [total_cost, final_cost, subv_fed, is_total, prod_esp.value, prod_seg, nc_f(nc, city, product)]
-
-def nc_f(x, city, product):
-    tax = Tax.objects.get(city_id=city, product_id=product)
-    if x == 1:
-        return tax.nc_60
-        # Do the thing
-    elif x == 2:
-        return tax.nc_65
-    # Do the other thing
-    else:
-        return tax.nc_70
+    return [total_cost, final_cost, subv_fed, is_total, prod_esp.value, prod_seg, tax]
