@@ -5,12 +5,19 @@
 
 {% block city %}
 {% endblock city %}
-  <h1>Calculo</h1>
+  <h1>
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="active"><a href="#">Produto <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </nav>
+  </h1>
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-pull-1">
     <form method="POST" name="cotador" class="post-form">{% csrf_token %}
-       <div class="row">
+     <div class="row">
         <div class="col-md-10">
           <!-- PRODUTO -->
           <div class="form-group">
