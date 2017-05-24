@@ -29,7 +29,8 @@ def quotation(request):
             'nc': nc,
             'price': price,
             'area': area,
-            're_select':city_sel})
+            're_select':city_sel,
+            'tax': result[6]})
 
 
     return render(request, 'cotador/cotador.html', {
