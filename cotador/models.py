@@ -62,7 +62,7 @@ class Tax(models.Model):
 
     def __str__(self):
         tax_inf = str(self.product) + " - " + str(self.city)
-        return self.tax_inf
+        return tax_inf
 
 class Lvl_Cob(models.Model):
     name = models.CharField(max_length=50)
