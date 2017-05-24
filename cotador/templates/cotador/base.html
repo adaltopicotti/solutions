@@ -2,21 +2,46 @@
 <html>
     <head>
         <title>ADAPITECH | Solutions</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap-theme.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'css/solution.css' %}">
 
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
         <div class="page-header">
             <h1><a href="/">| ADAPITECH |</a></h1>
         </div>
-        <div class="content container">
+        <div class="panel panel-primary">
+          <!-- Menu begin -->
+          <div class="panel-body">
             <div class="row">
+              <div class="col-md-2">
+                <div class="span3 bs-docs-sidebar">
+                  <ul class="nav nav-list bs-docs-sidenav">
+                    <li><p href="#typography"><i class="icon-chevron-right"></i> Cotações</p></li>
+                    <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+                    <li><a href="#tables"><i class="icon-chevron-right"></i> Tables</a></li>
+                    <li><a href="#forms"><i class="icon-chevron-right"></i> Forms</a></li>
+                    <li><a href="#buttons"><i class="icon-chevron-right"></i> Buttons</a></li>
+                    <li><a href="#images"><i class="icon-chevron-right"></i> Images</a></li>
+                    <li><a href="#icons"><i class="icon-chevron-right"></i> Icons by Glyphicons</a></li>
+                  </ul>
+                </div>
+              </div>
+            <!-- Menu end -->
+            <div class="col-md-2 col-md-offset-1">
               {% block content %}
               {% endblock %}
             </div>
+          </div>
         </div>
+        </div>
+            <div class="row">
+            </div>
+        </div>
+
+
+
     </body>
 </html>
