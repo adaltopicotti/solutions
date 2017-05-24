@@ -60,5 +60,10 @@ class Tax(models.Model):
     active = models.BooleanField(default=False)
 
     def __str__(self):
+        return self.product, self.city
 
-        return self.safra.safra_inf#, self.city.name
+class Lvl_Cob(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name

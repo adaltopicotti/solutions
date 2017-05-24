@@ -39,6 +39,15 @@
               {% endfor %}
             </select>
           </div>
+          <!-- PRODUTO -->
+          <div class="form-group">
+            <label for="lbl_nc">Nivel de Cobertura:</label>
+            <select name="nc" class="form-control">
+              {% for nc in nc %}
+              <option value="{{nc.id}}">{{nc.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
         </div>
       </div>
       <div class="row">
