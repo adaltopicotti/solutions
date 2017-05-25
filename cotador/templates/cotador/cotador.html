@@ -7,9 +7,11 @@
 {% endblock city %}
   <h1>
     <nav aria-label="...">
-      <ul class="pagination">
+      <ul class="pagination pagination-sm">
         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li class="active"><a href="#">Produto <span class="sr-only">(current)</span></a></li>
+        {% for page in pages %}
+          <li class="active"><a href="#">{{page}}</a></li>
+        {% endfor %}
       </ul>
     </nav>
   </h1>
@@ -22,11 +24,11 @@
 
           <!-- PRODUTO -->
           <div class="form-group">
-            <label for="lbl_product">Produto:</label>
+            <label for="lbl_product">Produto: {{product}}</label>
             <select name="product" class="form-control">
               {% for product in products %}
                 {% if product.id == product_sel %}
-                  <option value="{{culture.id}}" selected>{{product.name}}</option>
+                  <option value="{{product.id}}" selected>{{product.name}}</option>
                 {% else %}
                   <option value="{{product.id}}">{{product.name}}</option>
                 {% endif %}
@@ -96,7 +98,7 @@
               <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1" {% if area %} value="{{area}}" {% else %} value="10" {% endif %}>
             </div>
           </div>
-          <button type="submit" class="btn btn-default">Calcular</button>
+          <button type="submit" class="btn btn-default">Proximo</button>
         </div>
       </div>
     </form>
