@@ -19,43 +19,64 @@
     <form method="POST" name="cotador" class="post-form">{% csrf_token %}
      <div class="row">
         <div class="col-md-10">
-          {{tax}}
+
           <!-- PRODUTO -->
           <div class="form-group">
             <label for="lbl_product">Produto:</label>
             <select name="product" class="form-control">
               {% for product in products %}
-              <option value="{{product.id}}">{{product.name}}</option>
+                {% if product.id == product_sel %}
+                  <option value="{{culture.id}}" selected>{{product.name}}</option>
+                {% else %}
+                  <option value="{{product.id}}">{{product.name}}</option>
+                {% endif %}
               {% endfor %}
             </select>
           </div>
-          <!-- CULTURA
+          <!-- CULTURA -->
+          {% if product_sel %}
           <div class="form-group">
             <label for="lbl_culture">Cultura:</label>
             <select name="culture" class="form-control">
               {% for culture in cultures %}
-              <option value="{{culture.id}}">{{culture.name}}</option>
+                {% if culture.id == culture_sel %}
+                  <option value="{{culture.id}}" selected>{{culture.name}}</option>
+                {% else %}
+                  <option value="{{culture.id}}">{{culture.name}}</option>
+                {% endif %}
               {% endfor %}
             </select>
-          </div>-->
+          </div>
+          {% endif %}
           <!-- MUNICIPIO -->
+          {% if culture_sel %}
           <div class="form-group">
             <label for="lbl_municipio">Município</label>
             <select name="city" class="form-control">
               {% for city in cities %}
-              <option value="{{city.id}}">{{city.name}}</option>
+                {% if city.id == city_sel %}
+                  <option value="{{city.id}}" selected>{{city.name}}</option>
+                {% else %}
+                  <option value="{{city.id}}">{{city.name}}</option>
+                {% endif %}
               {% endfor %}
             </select>
           </div>
-          <!-- PRODUTO -->
+          <!-- Nivel de Cobertura -->
+          <p></p>
           <div class="form-group">
-            <label for="lbl_nc">Nivel de Cobertura:</label>
-            <select name="nc" class="form-control">
-              {% for nc in nc %}
-              <option value="{{nc.id}}">{{nc.name}}</option>
+            <label for="lbl_nc">Nivel de Cobertura: </label>
+            <select name="niv_cob" class="form-control">
+              {% for nc in ncs %}
+                {% if nc.id == nc_sel %}
+                  <option value="{{nc.id}}" selected>{{nc.name}}</option>
+                {% else %}
+                  <option value="{{nc.id}}">{{nc.name}}</option>
+                {% endif %}
               {% endfor %}
             </select>
           </div>
+          {% endif %}
         </div>
       </div>
       <div class="row">

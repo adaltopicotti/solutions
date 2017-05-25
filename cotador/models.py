@@ -46,7 +46,7 @@ class Prod_Esp(models.Model):
 
 class Culture(models.Model):
     name = models.CharField(max_length=50)
-
+    product = models.ForeignKey('cotador.Product')
     def __str__(self):
         return self.name
 
@@ -54,7 +54,7 @@ class Culture(models.Model):
 class Tax(models.Model):
     product = models.ForeignKey('cotador.Product')
     city = models.ForeignKey('cotador.City')
-    
+
     nc_60 = models.FloatField()
     nc_65 = models.FloatField()
     nc_70 = models.FloatField()
