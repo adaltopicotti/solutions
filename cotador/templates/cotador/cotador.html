@@ -21,7 +21,28 @@
       <form method="POST" name="cotador" class="post-form">{% csrf_token %}
        <div class="row">
           <div class="col-md-10">
-
+            <!-- CLIENTE -->
+            <div class="form-group">
+              <label for="lbl_cpf">CPF:</label>
+              <div class="input-group">
+                {% if cpf %}
+                  <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" >
+                {% else %}
+                  <input name="cpf" type="text" class="form-control">
+                {% endif %}
+              </div>
+            </div>
+            <!-- CLIENTE -->
+            <div class="form-group">
+              <label for="lbl_client_name">Nome do Segurado:</label>
+              <div class="input-group">
+                {% if client_name %}
+                  <input name="client_name" type="text" class="form-control" value="{{client_name}}" >
+                {% else %}
+                  <input name="client_name" type="text" class="form-control">
+                {% endif %}
+              </div>
+            </div>
             <!-- PRODUTO -->
             <div class="form-group">
               <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>

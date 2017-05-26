@@ -12,6 +12,12 @@ def quotation(request):
         product_sel = request.POST['product']
         cultures = Culture.objects.filter(product_id=product_sel)
         pages += [Product.objects.get(id=product_sel)]
+        client_cpf = request.POST['cpf']
+        if validateCPF(client_cpf):
+            client_name = "CPF Válido"
+        else:
+            client_name = "CPF Inválido"
+
         try:
             culture_sel = request.POST['culture']
             pages += [Culture.objects.get(id=culture_sel)]
@@ -40,6 +46,8 @@ def quotation(request):
                 'cultures': cultures,
                 'cities': cities,
                 'ncs': ncs,
+                'cpf': cpf,
+                'client_name': client_name,
                 'product_sel': int(product_sel),
                 'culture_sel': int(culture_sel),
                 'city_sel': int(city_sel),
@@ -60,6 +68,8 @@ def quotation(request):
                 'cultures': cultures,
                 'cities': cities,
                 'ncs': ncs,
+                'cpf': client_cpf,
+                'client_name': client_name,
                 'product_sel': int(product_sel),
                 'culture_sel': int(culture_sel),
                 'city_sel': int(city_sel),
@@ -106,22 +116,63 @@ def case_nc(x, city, product):
     else:
         return 0
 
-"""
-return render(request, 'cotador/cotador.html', {
-    'products': products,
-    'cultures': cultures,
-    'culture_sel': culture_Sel,
-    'cities': cities,
-    'total_cost': repr(result[0]),
-    'final_cost': repr(result[1]),
-    'subv_fed': repr(result[2]),
-    'is_total': repr(result[3]),
-    'prod_esp': result[4],
-    'prod_seg': result[5],
-    'city': city_sel_name,
-    'ncs': ncs,
-    'price': price,
-    'area': area,
-    'product_sel': int(product),
-    'city_sel':int(city),
-    'nc_sel': int(nc_sel)})"""
+def validateCPF(cpfNumber):
+        """
+        Method to validate a brazilian cpfNumber number
+        Based on Pedro Werneck source avaiable at
+        www.PythonBrasil.com.br
+
+        Tests:
+        >>> print cpfNumber().validate('91289037736')
+        True
+        >>> print cpfNumber().validate('91289037731')
+        False
+        """
+        cpfNumber_invalidos = [11*str(i) for i in range(10)]
+        if cpfNumber in cpfNumber_invalidos:
+            return False
+
+        if not cpfNumber.isdigit():
+            """ Verifica se o cpfNumber contem pontos e hifens """
+            cpfNumber = cpfNumber.replace( ".", "" )
+            cpfNumber = cpfNumber.replace( "-", "" )
+
+        if len( cpfNumber ) < 11:
+            """ Verifica se o cpfNumber tem 11 digitos """
+            return False
+        if len( cpfNumber ) > 11:
+            """ cpfNumber tem que ter 11 digitos """
+            return False
+        selfcpfNumber = [int( x ) for x in cpfNumber]
+        cpfNumber = selfcpfNumber[:9]
+        while len( cpfNumber ) < 11:
+            r =  sum( [( len( cpfNumber )+1-i )*v for i, v in [( x, cpfNumber[x] ) for x in range( len( cpfNumber ) )]] ) % 11
+            if r > 1:
+                f = 11 - r
+            else:
+                f = 0
+            cpfNumber.append( f )
+
+
+        return bool( cpfNumber == selfcpfNumber )
+
+def get_Client_Name(request):
+
+    key = 'e6cc0c8ac7fddca7d4a7bb45bcb2a813'
+    if request.method == "POST":
+        cpfNumber = request.POST['cpfNumber']
+        if validateCPF(cpfNumber) == True:
+            url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpfNumber
+            result = requests.get(url)
+            cpfJson = result.json()
+            return render(request, 'application/cpf.html', {
+                'r': cpfJson,
+                'cpfInfo': cpfInfo,
+                'page_title': 'CPF'})
+        else:
+            return render(request, 'application/cpf.html', {
+                'r': '*Insira um CPF válido!',
+                'cpfInfo': cpfInfo,
+                'page_title': 'CPF'})
+    else:
+        return render(request, 'application/cpf.html', {'cpfInfo': cpfInfo, 'page_title': 'CPF'})
