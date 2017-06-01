@@ -51,7 +51,7 @@ def quotation(request):
                 'cultures': cultures,
                 'cities': cities,
                 'ncs': ncs,
-                'cpf': cpf,
+                'cpf': client_cpf,
                 'client_name': client_name,
                 'product_sel': int(product_sel),
                 'culture_sel': int(culture_sel),
