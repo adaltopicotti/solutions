@@ -24,7 +24,8 @@
             <!--Subpage 1 -->
 
               <!-- PRODUTO -->
-              <div class="form-group">
+              {% if index > 34 %}
+              <div class="form-group" type="hidden">
                 <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
                 <select name="product" class="form-control" >
                   {% for product in products %}
@@ -35,7 +36,7 @@
                   {% endif %}
                   {% endfor %}
                 </select>
-              </div>
+              </div>{% endif %}
               <!-- CLIENTE -->
               <div class="form-group">
                 <label for="lbl_cpf">CPF:</label>
