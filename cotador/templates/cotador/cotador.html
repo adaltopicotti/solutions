@@ -25,7 +25,7 @@
 
               <!-- PRODUTO -->
               
-              <div class="form-group" {% if index > 2 %}type="hidden"{% endif %}>
+              <div class="form-group" {% if index > 2 %}hidden="true"{% endif %}>
                 <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
                 <select name="product" class="form-control" >
                   {% for product in products %}
