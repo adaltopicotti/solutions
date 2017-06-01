@@ -21,90 +21,97 @@
       <form method="POST" name="cotador" class="post-form">{% csrf_token %}
        <div class="row">
           <div class="col-md-10">
-            <!-- CLIENTE -->
-            <div class="form-group">
-              <label for="lbl_cpf">CPF:</label>
-              <div class="input-group">
-                {% if cpf %}
-                  <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" >
-                {% else %}
-                  <input name="cpf" type="text" class="form-control">
-                {% endif %}
-              </div>
-            </div>
-            <!-- CLIENTE -->
-            <div class="form-group">
-              <label for="lbl_client_name">Nome do Segurado:</label>
-              <div class="input-group">
-                {% if client_name %}
-                  <input name="client_name" type="text" class="form-control" value="{{client_name}}" >
-                {% else %}
-                  <input name="client_name" type="text" class="form-control">
-                {% endif %}
-              </div>
-            </div>
-            <!-- PRODUTO -->
-            <div class="form-group">
-              <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
-              <select name="product" class="form-control">
-                {% for product in products %}
+            <!--Subpage 1 -->
+
+              <!-- PRODUTO -->
+              <div class="form-group">
+                <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
+                <select name="product" class="form-control" >
+                  {% for product in products %}
                   {% if product.id == product_sel %}
-                    <option value="{{product.id}}" selected>{{product.name}}</option>
-                  {% else %}
-                    <option value="{{product.id}}">{{product.name}}</option>
+                  <option value="{{product.id}}" selected>{{product.name}}</option>
+                  {% else %}{% endif% }
+                  <option value="{{product.id}}">{{product.name}}</option>
                   {% endif %}
-                {% endfor %}
-              </select>
-            </div>
-            <!-- CULTURA -->
-            {% if index >= 1 %}
-            <div class="form-group">
-              <label for="lbl_culture">Cultura: {{culture}}</label>
-              <select name="culture" class="form-control">
-                {% for culture in cultures %}
-                  {% if culture.id == culture_sel %}
-                    <option value="{{culture.id}}" selected>{{culture.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>{% if index < 2 %}
+              <!-- CLIENTE -->
+              <div class="form-group">
+                <label for="lbl_cpf">CPF:</label>
+                <div class="input-group">
+                  {% if cpf %}
+                    <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" >
                   {% else %}
-                    <option value="{{culture.id}}">{{culture.name}}</option>
+                    <input name="cpf" id="cpf" type="text" class="form-control">
+                    {% if cpf_error == True %}
+                    <p>CPF Inválido</p>
+                    {% endif %}
                   {% endif %}
-                {% endfor %}
-              </select>
-            </div>
+                </div>
+              </div>
+              {% if index >= 1 and index < 2%}
+              <!-- CLIENTE -->
+              <div class="form-group">
+                <label for="lbl_client_name">Nome do Segurado:</label>
+                <div class="input-group">
+                  {% if client_name %}
+                    <input name="client_name" type="text" class="form-control" value="{{client_name}}" disabled>
+                  {% else %}
+                    <input name="client_name" type="text" class="form-control">
+                  {% endif %}
+                </div>
+              </div>
+              <!-- CULTURA -->
+              <div class="form-group">
+                <label for="lbl_culture">Cultura: {{culture}}</label>
+                <select name="culture" class="form-control">
+                  {% for culture in cultures %}
+                    {% if culture.id == culture_sel %}
+                      <option value="{{culture.id}}" selected>{{culture.name}}</option>
+                    {% else %}
+                      <option value="{{culture.id}}">{{culture.name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+              {% endif %}
             {% endif %}
+            <!-- Subpage 2 -->
             <!-- MUNICIPIO -->
             {% if index >= 2 %}
-            <div class="form-group">
-              <label for="lbl_municipio">Município</label>
-              <select name="city" class="form-control">
-                {% for city in cities %}
-                  {% if city.id == city_sel %}
-                    <option value="{{city.id}}" selected>{{city.name}}</option>
-                  {% else %}
-                    <option value="{{city.id}}">{{city.name}}</option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-            </div>
-            <!-- Nivel de Cobertura -->
-            <p></p>
-            <div class="form-group">
-              <label for="lbl_nc">Nivel de Cobertura: </label>
-              <select name="niv_cob" class="form-control">
-                {% for nc in ncs %}
-                  {% if nc.id == nc_sel %}
-                    <option value="{{nc.id}}" selected>{{nc.name}}</option>
-                  {% else %}
-                    <option value="{{nc.id}}">{{nc.name}}</option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-            </div>
+              <div class="form-group">
+                <label for="lbl_municipio">Município</label>
+                <select name="city" class="form-control">
+                  {% for city in cities %}
+                    {% if city.id == city_sel %}
+                      <option value="{{city.id}}" selected>{{city.name}}</option>
+                    {% else %}
+                      <option value="{{city.id}}">{{city.name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+              <!-- Nivel de Cobertura -->
+              <p></p>
+              <div class="form-group">
+                <label for="lbl_nc">Nivel de Cobertura: </label>
+                <select name="niv_cob" class="form-control">
+                  {% for nc in ncs %}
+                    {% if nc.id == nc_sel %}
+                      <option value="{{nc.id}}" selected>{{nc.name}}</option>
+                    {% else %}
+                      <option value="{{nc.id}}">{{nc.name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
             {% endif %}
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {% if index >= 3 %}
+            {% if index >= 2 %}
             <div class="form-group">
               <label for="lbl_price">Preço da Saca</label>
               <div class="input-group">
@@ -176,7 +183,7 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
   </div>
   {% endif %}
 {% endblock %}

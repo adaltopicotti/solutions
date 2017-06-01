@@ -17,8 +17,11 @@ def quotation(request):
         client_cpf = request.POST['cpf']
         if validateCPF(client_cpf):
             client_name = "CPF Válido"
+            cpf_error = ""
         else:
-            client_name = "CPF Inválido"
+            client_name = ""
+            cpf_error = True
+            index = index -1
 
         try:
             culture_sel = request.POST['culture']
@@ -72,6 +75,7 @@ def quotation(request):
                 'ncs': ncs,
                 'cpf': client_cpf,
                 'client_name': client_name,
+                'cpf_error': cpf_error,
                 'product_sel': int(product_sel),
                 'culture_sel': int(culture_sel),
                 'city_sel': int(city_sel),
@@ -86,7 +90,8 @@ def quotation(request):
     return render(request, 'cotador/cotador.html', {
         'pages': pages,
         'products': products,
-        'cities': cities
+        'cities': cities,
+        'index': index
         })
 
 

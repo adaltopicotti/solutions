@@ -32,6 +32,8 @@ function get(url) {
   });
 }
 
+$('#cpf').change(alert("ok"));
+
 // Digitando CEP
 $('#cpf').on('blur', function(e) {
   alert("Ok")
