@@ -7,18 +7,15 @@
 {% endblock city %}
 <script>
     function validar() {
-       function mainFunction(){
-            alert("Beginning API Main Function");
+        alert("Beginning API Main Function");
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'getCPF/',
-                    success: function(){alert('DONE!');},
-                    error:function(){alert('ERROR!');},
-            });
-            alert("ENDING API MAIN FUNCTION");
-        }
-        alert();
+            $.ajax({
+                type: 'POST',
+                url: 'getCPF/',
+                success: function(){alert('DONE!');},
+                error:function(){alert('ERROR!');},
+        });
+        alert("ENDING API MAIN FUNCTION");
     };
 </script>
 
