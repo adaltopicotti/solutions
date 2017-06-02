@@ -5,6 +5,7 @@ from .models import City, Prod_Esp, Culture, Product, Safra, Tax, Lvl_Cob
 # Create your views here.
 
 def getCPF(request):
+    client_cpf = request.POST['cpf']
     if validateCPF(client_cpf):
             client_name = "CPF Válido"
             client_name = "Inválido"
