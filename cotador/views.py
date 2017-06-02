@@ -9,7 +9,13 @@ def getCPF(request):
     if validateCPF(client_cpf):
             client_name = "CPF Válido"
             client_name = "Inválido"
-    return client_name
+            
+    return render(request, 'cotador/cotador.html', {
+        'products': products,
+        'cities': cities,
+        'client_name': client_name
+        })
+
 
 def quotation(request):
     index = 0
