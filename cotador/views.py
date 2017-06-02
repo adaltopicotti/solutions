@@ -61,6 +61,7 @@ def quotation(request):
             price = 0
             area = 0
         if index == 4:
+            city = City.objects.get(id=city_sel)
             result_calc = calc(float(price), float(area), city_sel, product_sel, nc_sel)
             return render(request, 'cotador/cotador.html', {
                 'products': products,
@@ -69,6 +70,7 @@ def quotation(request):
                 'ncs': ncs,
                 'cpf': client_cpf,
                 'client_name': client_name,
+                'city':city,
                 'product_sel': int(product_sel),
                 'culture_sel': int(culture_sel),
                 'city_sel': int(city_sel),
