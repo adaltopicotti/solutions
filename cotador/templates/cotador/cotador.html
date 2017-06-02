@@ -28,7 +28,8 @@
     </nav>
   </h1>
   <div class="container-fluid">
-    <div class="form-group" name="quot" {% if index > 2 %}hidden="true"{% endif %}>
+  <form method="POST" name="cotador" class="post-form">{% csrf_token %}
+    <div class="form-group" {% if index > 2 %}hidden="true"{% endif %}>
     <!-- Begin Subpage 1 -->
     <div class="row">
       <div class="col-md-3">
@@ -138,6 +139,7 @@
       </div>
     </div>
   </div>
+</form>
 </div>
   <!--
   <div class="container">
