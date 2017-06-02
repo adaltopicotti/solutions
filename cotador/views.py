@@ -35,7 +35,7 @@ def quotation(request):
             client_name = "CPF Válido"
             cpf_error = ""
         else:
-            client_name = ""
+            client_name = "Inválido"
             cpf_error = True
             index = index -1
 
