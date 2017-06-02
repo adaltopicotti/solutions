@@ -51,7 +51,7 @@
         {% if cpf %}
           <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" onchange="validar()">
         {% else %}
-          <input name="cpf" id="cpf" type="text" class="form-control" onchange="{% url 'cpf'%}">
+          <input name="cpf" id="cpf" type="text" class="form-control" onchange="validar()">
           {% if cpf_error == True %}
           <p>CPF Inválido</p>
           {% endif %}
