@@ -110,6 +110,21 @@
         </select>
       </div>
     </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <label for="lbl_nc">Nivel de Cobertura: </label>
+        <select name="niv_cob" class="form-control">
+          {% for nc in ncs %}
+            {% if nc.id == nc_sel %}
+              <option value="{{nc.id}}" selected>{{nc.name}}</option>
+            {% else %}
+              <option value="{{nc.id}}">{{nc.name}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
   </div>
 </div>
   <!--
@@ -124,18 +139,6 @@
 
 
             {% if index >= 2 %}
-              <div class="form-group">
-                <label for="lbl_municipio">Município</label>
-                <select name="city" class="form-control">
-                  {% for city in cities %}
-                    {% if city.id == city_sel %}
-                      <option value="{{city.id}}" selected>{{city.name}}</option>
-                    {% else %}
-                      <option value="{{city.id}}">{{city.name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              </div>
 
               <p></p>
               <div class="form-group">
