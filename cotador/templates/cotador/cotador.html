@@ -26,6 +26,9 @@
   <div class="container-fluid">
   <form method="POST" name="cotador" class="post-form">{% csrf_token %}
     <div class="form-group" {% if index > 2 %}hidden="true"{% endif %}>
+        <button type="submit" class="btn btn-default">
+                Calcular
+            </button>
     <!-- Begin Subpage 1 -->
     <div class="row">
       <div class="col-md-3">
