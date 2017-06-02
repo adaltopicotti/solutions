@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.quotation, name='quotation'),
-    url(r'^getcpf$', views.getCPF, name='getCPF'), 
+    url(r'^cpf$', views.cpf, name='cpf'), 
 ]
