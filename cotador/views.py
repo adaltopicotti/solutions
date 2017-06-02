@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import City, Prod_Esp, Culture, Product, Safra, Tax, Lvl_Cob
 # Create your views here.
 
-def getCPF(request):
+def cpf(request):
     client_cpf = request.POST['cpf']
     if validateCPF(client_cpf):
             client_name = "CPF Válido"
