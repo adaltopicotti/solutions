@@ -3,6 +3,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import City, Prod_Esp, Culture, Product, Safra, Tax, Lvl_Cob
 # Create your views here.
+
+def getCPF(request):
+    if validateCPF(client_cpf):
+            client_name = "CPF Válido"
+            client_name = "Inválido"
+    return client_name
+
 def quotation(request):
     index = 0
     pages = ["Cotação"]
