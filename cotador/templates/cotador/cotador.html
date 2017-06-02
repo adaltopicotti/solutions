@@ -7,8 +7,18 @@
 {% endblock city %}
 <script>
     function validar() {
-       
-        alert( {{getCPF(05195990980)}});
+       function mainFunction(){
+            alert("Beginning API Main Function");
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'getCPF/',
+                    success: function(){alert('DONE!');},
+                    error:function(){alert('ERROR!');},
+            });
+            alert("ENDING API MAIN FUNCTION");
+        }
+        alert();
     };
 </script>
 
