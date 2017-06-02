@@ -8,7 +8,7 @@
 <script>
     function validar() {
         alert("Beginning API Main Function");
-
+        document.getElementById("quot").submit();
             $.ajax({
                 type: 'submit',
                 url: "{% url 'cpf' %}",
@@ -28,7 +28,7 @@
     </nav>
   </h1>
   <div class="container-fluid">
-    <div class="form-group" {% if index > 2 %}hidden="true"{% endif %}>
+    <div class="form-group" name="quot" {% if index > 2 %}hidden="true"{% endif %}>
     <!-- Begin Subpage 1 -->
     <div class="row">
       <div class="col-md-3">
