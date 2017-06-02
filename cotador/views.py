@@ -12,7 +12,7 @@ def cpf(request):
         else:
             client_name = "Inválido"
     client_name = "WE"       
-    return render(request, 'cotador/cotador.html', {
+    return render(request, 'cotador/city.html', {
         'products': products,
         'cities': cities,
         'client_name': client_name
