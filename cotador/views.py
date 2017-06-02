@@ -7,8 +7,9 @@ from .models import City, Prod_Esp, Culture, Product, Safra, Tax, Lvl_Cob
 def cpf(request):
     client_cpf = request.POST['cpf']
     if validateCPF(client_cpf):
-            client_name = "CPF Válido"
-            client_name = "Inválido"
+        client_name = "CPF Válido"
+    else:
+        client_name = "Inválido"
             
     return render(request, 'cotador/cotador.html', {
         'products': products,
