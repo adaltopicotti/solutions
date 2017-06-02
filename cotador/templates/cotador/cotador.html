@@ -136,6 +136,21 @@
           {% endfor %}
         </select>
       </div>
+      <div class="col-md-2">
+        <label for="lbl_price">Preço da Saca</label>
+        <div class="input-group">
+            <span class="input-group-addon">R$</span>
+            <input name="price" type="text" class="form-control" aria-label="Amount" {% if price %} value="{{price}}" {% else %} value="35" {% endif %}>
+            <span class="input-group-addon">,00</span>
+        </div>    
+      </div>
+        <div>
+         <label for="lbl_area">Área</label>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">HA</span>
+            <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1" {% if area %} value="{{area}}" {% else %} value="10" {% endif %}>
+          </div>   
+        </div>
     </div>
   </div>
 </form>
