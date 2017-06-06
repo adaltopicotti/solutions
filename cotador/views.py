@@ -11,7 +11,7 @@ def cpf(request):
             client_name = "CPF Válido"
         else:
             client_name = "Inválido"
-    client_name = "WE"       
+    client_name = "WE"
     return render(request, 'cotador/cotador.html', {
         'products': products,
         'cities': cities,
@@ -20,47 +20,40 @@ def cpf(request):
 
 
 def quotation(request):
-    index = 0
+    page = [0]
     pages = ["Cotação"]
     products = Product.objects.filter(active=1)
     cities = City.objects.all()
     ncs = Lvl_Cob.objects.all()
     if request.method == "POST":
-        index = index + 1
         product_sel = request.POST['product']
         cultures = Culture.objects.filter(product_id=product_sel)
-        pages += [Product.objects.get(id=product_sel)]
+        pages += 1
         client_cpf = request.POST['cpf']
         if validateCPF(client_cpf):
             client_name = "CPF Válido"
-            cpf_error = ""
+            cpf_error = False
         else:
             client_name = "Inválido"
             cpf_error = True
-            index = index -1
 
         try:
             culture_sel = request.POST['culture']
-            pages += [Culture.objects.get(id=culture_sel)]
-            index = index + 1
         except:
             culture_sel = 0
         try:
             city_sel = request.POST['city']
             nc_sel = request.POST['niv_cob']
-            pages += [City.objects.get(id=city_sel), Lvl_Cob.objects.get(id=nc_sel)]
-            index = index + 1
         except:
             city_sel = 0
             nc_sel = 0
         try:
             price = request.POST['price']
             area = request.POST['area']
-            index = index + 1
         except:
             price = 0
             area = 0
-        if index == 4:
+        if subpage == 3:
             city = City.objects.get(id=city_sel)
             result_calc = calc(float(price), float(area), city_sel, product_sel, nc_sel)
             return render(request, 'cotador/cotador.html', {
@@ -76,7 +69,6 @@ def quotation(request):
                 'city_sel': int(city_sel),
                 'nc_sel': int(nc_sel),
                 'pages': pages,
-                'index': index,
                 'total_cost': (result_calc[0]),
                 'final_cost': repr(result_calc[1]),
                 'subv_fed': repr(result_calc[2]),
@@ -99,7 +91,6 @@ def quotation(request):
                 'city_sel': int(city_sel),
                 'nc_sel': int(nc_sel),
                 'pages': pages,
-                'index': index
                 })
 
 
@@ -109,7 +100,6 @@ def quotation(request):
         'pages': pages,
         'products': products,
         'cities': cities,
-        'index': index
         })
 
 
