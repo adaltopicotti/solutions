@@ -1,7 +1,7 @@
 #!/usr/bin/python2.6
 # -*-coding: utf-8 -*
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import City, Prod_Esp, Culture, Product, Safra, Tax, Lvl_Cob
+from .models import *
 # Create your views here.
 
 def cpf(request):
@@ -21,6 +21,7 @@ def cpf(request):
 
 def quotation(request):
     pages = ["Cotação"]
+    subpage = 1
     products = Product.objects.filter(active=1)
     cities = City.objects.all()
     ncs = Lvl_Cob.objects.all()
