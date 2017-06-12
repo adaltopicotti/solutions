@@ -32,10 +32,8 @@ def quotation(request):
             client_name = "Inválido"
             cpf_error = True
 
-    return render(request, 'cotador/cotador.html', {
+    return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
-        'products': products,
-        'cities': cities,
         })
 
 
