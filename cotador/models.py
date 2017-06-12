@@ -8,11 +8,11 @@ class MaritalStatus(models.Model):
     description = models.CharField(max_length=150)
 
 class Insured(models.Model):
-    cpf_cnpj = models.CharField(max_lenght=14, null = False)
+    cpf_cnpj = models.CharField(max_length=14, null = False)
     name = models.CharField(max_length=50, null=False)
     born_date = models.DateTimeField(null=False)
-    rg = models.CharField(max_lenght=10, null = False)
-    org_exp = models.CharField(max_lenght=10, null = False)
+    rg = models.CharField(max_length=10, null = False)
+    org_exp = models.CharField(max_length=10, null = False)
     exp_date = models.DateTimeField(null=False)
     ppe = models.BooleanField(default=False)
     marital_status = models.ForeignKey('cotador.MaritalStatus')
