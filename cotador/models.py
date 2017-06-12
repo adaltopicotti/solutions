@@ -2,6 +2,22 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
+
+class MaritalStatus(models.Model):
+    marital = models.CharField(max_length=50, null=False)
+    description = models.CharField(max_length=150)
+
+class Insured(models.Model):
+    cpf_cnpj = models.CharField(max_lenght=14, null = False)
+    name = models.CharField(max_length=50, null=False)
+    born_date = models.DateTimeField(null=False)
+    rg = models.CharField(max_lenght=10, null = False)
+    org_exp = models.CharField(max_lenght=10, null = False)
+    exp_date = models.DateTimeField(null=False)
+    ppe = models.BooleanField(default=False)
+    marital_status = models.ForeignKey('cotador.MaritalStatus')
+    
+
 class Uf(models.Model):
     sigla = models.CharField(max_length=2, null=False)
     name = models.CharField(max_length=50, null=False)
