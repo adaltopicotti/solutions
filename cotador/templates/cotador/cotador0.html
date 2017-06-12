@@ -5,6 +5,12 @@
 
 {% block city %}
 {% endblock city %}
+<script>
+    function validar() {
+        document.getElementById("cotador").submit();
+    };
+</script>
+
   <h1>
     <nav aria-label="...">
       <ul class="pagination pagination-sm">
@@ -15,131 +21,142 @@
       </ul>
     </nav>
   </h1>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-pull-1">
-      <form method="POST" name="cotador" class="post-form">{% csrf_token %}
-       <div class="row">
-          <div class="col-md-10">
-            <!--Subpage 1 -->
-
-              <!-- PRODUTO -->
-              
-              <div class="form-group" {% if index > 2 %}hidden="true"{% endif %}>
-                <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
-                <select name="product" class="form-control" >
-                  {% for product in products %}
-                  {% if product.id == product_sel %}
-                  <option value="{{product.id}}" selected>{{product.name}}</option>
-                  {% else %}{% endif% }
-                  <option value="{{product.id}}">{{product.name}}</option>
-                  {% endif %}
-                  {% endfor %}
-                </select>
-              </div>
-              <!-- CLIENTE -->
-              <div class="form-group">
-                <label for="lbl_cpf">CPF:</label>
-                <div class="input-group">
-                  {% if cpf %}
-                    <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" >
-                  {% else %}
-                    <input name="cpf" id="cpf" type="text" class="form-control">
-                    {% if cpf_error == True %}
-                    <p>CPF Inválido</p>
-                    {% endif %}
-                  {% endif %}
-                </div>
-              </div>
-              {% if index >= 1  %}
-              <!-- CLIENTE -->
-              <div class="form-group">
-                <label for="lbl_client_name">Nome do Segurado:</label>
-                <div class="input-group">
-                  {% if client_name %}
-                    <input name="client_name" type="text" class="form-control" value="{{client_name}}" disabled>
-                  {% else %}
-                    <input name="client_name" type="text" class="form-control">
-                  {% endif %}
-                </div>
-              </div>
-              <!-- CULTURA -->
-              <div class="form-group">
-                <label for="lbl_culture">Cultura: {{culture}}</label>
-                <select name="culture" class="form-control">
-                  {% for culture in cultures %}
-                    {% if culture.id == culture_sel %}
-                      <option value="{{culture.id}}" selected>{{culture.name}}</option>
-                    {% else %}
-                      <option value="{{culture.id}}">{{culture.name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              </div>
-            
-            {% endif %}
-            <!-- Subpage 2 -->
-            <!-- MUNICIPIO -->
-            {% if index >= 2 %}
-              <div class="form-group">
-                <label for="lbl_municipio">Município</label>
-                <select name="city" class="form-control">
-                  {% for city in cities %}
-                    {% if city.id == city_sel %}
-                      <option value="{{city.id}}" selected>{{city.name}}</option>
-                    {% else %}
-                      <option value="{{city.id}}">{{city.name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              </div>
-              <!-- Nivel de Cobertura -->
-              <p></p>
-              <div class="form-group">
-                <label for="lbl_nc">Nivel de Cobertura: </label>
-                <select name="niv_cob" class="form-control">
-                  {% for nc in ncs %}
-                    {% if nc.id == nc_sel %}
-                      <option value="{{nc.id}}" selected>{{nc.name}}</option>
-                    {% else %}
-                      <option value="{{nc.id}}">{{nc.name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            {% if index >= 2 %}
-            <div class="form-group">
-              <label for="lbl_price">Preço da Saca</label>
-              <div class="input-group">
-                <span class="input-group-addon">R$</span>
-                <input name="price" type="text" class="form-control" aria-label="Amount" {% if price %} value="{{price}}" {% else %} value="35" {% endif %}>
-                <span class="input-group-addon">,00</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="lbl_area">Área</label>
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">HA</span>
-                <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1" {% if area %} value="{{area}}" {% else %} value="10" {% endif %}>
-              </div>
-            </div>
-            {% endif %}
-            <button type="submit" class="btn btn-default">
-              {% if index == 3 %}
+  <div class="container-fluid">
+  <form method="POST" name="cotador" id="cotador" class="post-form">{% csrf_token %}
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">
                 Calcular
-              {% else %}
-                Avançar
-              {% endif %}
             </button>
+      <!-- Begin Subpage 1 -->
+      <div class="row">
+        <div class="col-md-3">
+          <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
+          <select name="product" class="form-control" >
+            {% for product in products %}
+            {% if product.id == product_sel %}
+            <option value="{{product.id}}" selected>{{product.name}}</option>
+            {% else %}{% endif% }
+            <option value="{{product.id}}">{{product.name}}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <label for="lbl_cpf">CPF:</label>
+          {% if cpf %}
+            <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" onchange="validar()">
+          {% else %}
+            <input name="cpf" id="cpf" type="text" class="form-control" onchange="validar()">
+            {% if cpf_error == True %}
+            <p>CPF Inválido</p>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="col-md-3">
+          <label for="lbl_client_name">Nome do Segurado:</label>
+          {% if client_name %}
+            <input name="client_name" type="text" class="form-control" value="{{client_name}}" disabled>
+          {% else %}
+            <input name="client_name" type="text" class="form-control">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- End Subpage 1 -->
+    <br>
+    <!-- Begin Subpage 2 -->
+    <div class="form-group" {% if index < 2 %}hidden="true"{% endif %}>
+      <div class="row">
+        <div class="col-md-2">
+          <label for="lbl_sbv">Subvenção:</label>
+          <select name="culture" class="form-control">
+            {% for sbv in sbv %}
+              {% if culture.id == culture_sel %}
+                <option value="{{sbv.id}}" selected>{{sbv.name}}</option>
+              {% else %}
+                <option value="{{sbv.id}}">{{sbv.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="lbl_culture">Cultura: </label>
+          <select name="culture" class="form-control">
+            {% for culture in cultures %}
+              {% if culture.id == culture_sel %}
+                <option value="{{culture.id}}" selected>{{culture.name}}</option>
+              {% else %}
+                <option value="{{culture.id}}">{{culture.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <label for="lbl_uf">Estado:</label>
+          <select name="uf" class="form-control">
+            {% for uf in ufs %}
+              {% if uf.id == uf_sel %}
+                <option value="{{uf.id}}" selected>{{uf.name}}</option>
+              {% else %}
+                <option value="{{uf.id}}">{{uf.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="lbl_municipio">Município</label>
+          <select name="city" class="form-control">
+            {% for city in cities %}
+              {% if city.id == city_sel %}
+                <option value="{{city.id}}" selected>{{city.name}}</option>
+              {% else %}
+                <option value="{{city.id}}">{{city.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <label for="lbl_nc">Nivel de Cobertura: </label>
+          <select name="niv_cob" class="form-control">
+            {% for nc in ncs %}
+              {% if nc.id == nc_sel %}
+                <option value="{{nc.id}}" selected>{{nc.name}}</option>
+              {% else %}
+                <option value="{{nc.id}}">{{nc.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <!-- End Subpage 2 -->
+        <div class="col-md-2">
+          <label for="lbl_price">Preço da Saca</label>
+          <div class="input-group">
+              <span class="input-group-addon">R$</span>
+              <input name="price" type="text" class="form-control" aria-label="Amount" {% if price %} value="{{price}}" {% else %} value="35" {% endif %}>
+              <span class="input-group-addon">,00</span>
           </div>
         </div>
-      </form>
+          <div class="col-md-2">
+           <label for="lbl_area">Área</label>
+            <div class="input-group">
+              <input type="text" name="area" class="form-control" placeholder="10" aria-describedby="basic-addon1" {% if area %} value="{{area}}" {% else %} value="10" {% endif %}>
+              <span class="input-group-addon" id="basic-addon1">HA</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </form>
+<div class="row">
+  <div class="col-md-8">
     {% if index >= 4 %}
     <div class="col-md-6 col-md-push-1">
       <div class="panel panel-primary">
@@ -150,7 +167,7 @@
           <table class="table table-bordered">
             <tr>
               <td>Municipio:</td>
-              <td> {{city}}</td>
+              <td> {{city.name}}</td>
             </tr>
             <tr>
               <td>Prod. Esperada:</td>
@@ -184,7 +201,8 @@
         </div>
       </div>
     </div>
-  </div>
-  </div>
+    </div>
+      </div>
+</div>
   {% endif %}
 {% endblock %}
