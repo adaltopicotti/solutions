@@ -10,6 +10,8 @@ def cpfcnpj_request(cpf_cnpj):
             insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
             return insured
         except:
+            person_result = get_insured_name(cpf_cnpj)
+            return person_result
             
     
     if request.method == "POST":
@@ -26,12 +28,14 @@ def quotation(request):
     if request.method == "POST":
         cpf_cnpj = request.POST['cpf_cnpj']
         try:
-            if cpf_request(cpf_cnpj):
-                insured_name = "CPF Válido"
-                cpf_error = False
-            else:
-                client_name = "Inválido"
-                cpf_error = True
+            insured = cpf_request(cpf_cnpj)
+            insured_error = ""
+            return render(request, 'cotador/multirrisco.html', {
+                'pages': pages,
+                'insured_name': insured.nome
+                })
+        except
+            insured_error = "Documento Inválido"
 
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
@@ -91,27 +95,11 @@ def validate_cpf(cpfNumber):
             else:
                 f = 0
             cpfNumber.append( f )
-
-
         return bool( cpfNumber == selfcpfNumber )
 
-def get_Client_Name(request):
-
+def get_insured_name(cpf_cnpj):
     key = 'e6cc0c8ac7fddca7d4a7bb45bcb2a813'
-    if request.method == "POST":
-        cpfNumber = request.POST['cpfNumber']
-        if validateCPF(cpfNumber) == True:
-            url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpfNumber
-            result = requests.get(url)
-            cpfJson = result.json()
-            return render(request, 'application/cpf.html', {
-                'r': cpfJson,
-                'cpfInfo': cpfInfo,
-                'page_title': 'CPF'})
-        else:
-            return render(request, 'application/cpf.html', {
-                'r': '*Insira um CPF válido!',
-                'cpfInfo': cpfInfo,
-                'page_title': 'CPF'})
-    else:
-        return render(request, 'application/cpf.html', {'cpfInfo': cpfInfo, 'page_title': 'CPF'})
+    url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpfNumber
+    result = requests.get(url)
+    cpfJson = result.json()
+    return cpfJson
