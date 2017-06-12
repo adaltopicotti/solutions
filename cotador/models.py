@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class MaritalStatus(models.Model):
     marital = models.CharField(max_length=50, null=False)
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150,blank=True, null=True )
 
 class Insured(models.Model):
     cpf_cnpj = models.CharField(max_length=14, null = False)
