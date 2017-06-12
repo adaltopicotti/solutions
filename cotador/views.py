@@ -13,13 +13,6 @@ def cpfcnpj_request(cpf_cnpj):
             person_result = get_insured_name(cpf_cnpj)
             return person_result
             
-    
-    if request.method == "POST":
-        client_cpf = request.POST['cpf']
-        if validateCPF(client_cpf):
-            client_name = "CPF Válido"
-        else:
-            client_name = "Inválido"
 
 def quotation(request):
     pages = ["Cotação"]
