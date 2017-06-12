@@ -20,7 +20,6 @@ def cpf(request):
 
 
 def quotation(request):
-    page = [0]
     pages = ["Cotação"]
     products = Product.objects.filter(active=1)
     cities = City.objects.all()
@@ -28,7 +27,6 @@ def quotation(request):
     if request.method == "POST":
         product_sel = request.POST['product']
         cultures = Culture.objects.filter(product_id=product_sel)
-        pages += 1
         client_cpf = request.POST['cpf']
         if validateCPF(client_cpf):
             client_name = "CPF Válido"
