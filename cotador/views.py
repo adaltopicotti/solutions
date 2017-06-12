@@ -36,65 +36,6 @@ def quotation(request):
             client_name = "Inválido"
             cpf_error = True
 
-        try:
-            culture_sel = request.POST['culture']
-        except:
-            culture_sel = 0
-        try:
-            city_sel = request.POST['city']
-            nc_sel = request.POST['niv_cob']
-        except:
-            city_sel = 0
-            nc_sel = 0
-        try:
-            price = request.POST['price']
-            area = request.POST['area']
-        except:
-            price = 0
-            area = 0
-        if subpage == 3:
-            city = City.objects.get(id=city_sel)
-            result_calc = calc(float(price), float(area), city_sel, product_sel, nc_sel)
-            return render(request, 'cotador/cotador.html', {
-                'products': products,
-                'cultures': cultures,
-                'cities': cities,
-                'ncs': ncs,
-                'cpf': client_cpf,
-                'client_name': client_name,
-                'city':city,
-                'product_sel': int(product_sel),
-                'culture_sel': int(culture_sel),
-                'city_sel': int(city_sel),
-                'nc_sel': int(nc_sel),
-                'pages': pages,
-                'total_cost': (result_calc[0]),
-                'final_cost': repr(result_calc[1]),
-                'subv_fed': repr(result_calc[2]),
-                'subv_est': repr(result_calc[3]),
-                'is_total': repr(result_calc[4]),
-                'prod_esp': result_calc[5],
-                'prod_seg': result_calc[6]
-                })
-        else:
-            return render(request, 'cotador/cotador.html', {
-                'products': products,
-                'cultures': cultures,
-                'cities': cities,
-                'ncs': ncs,
-                'cpf': client_cpf,
-                'client_name': client_name,
-                'cpf_error': cpf_error,
-                'product_sel': int(product_sel),
-                'culture_sel': int(culture_sel),
-                'city_sel': int(city_sel),
-                'nc_sel': int(nc_sel),
-                'pages': pages,
-                })
-
-
-
-
     return render(request, 'cotador/cotador.html', {
         'pages': pages,
         'products': products,
