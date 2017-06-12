@@ -23,11 +23,7 @@ def quotation(request):
     pages = ["Cotação"]
     subpage = 1
     products = Product.objects.filter(active=1)
-    cities = City.objects.all()
-    ncs = Lvl_Cob.objects.all()
     if request.method == "POST":
-        product_sel = request.POST['product']
-        cultures = Culture.objects.filter(product_id=product_sel)
         client_cpf = request.POST['cpf']
         if validateCPF(client_cpf):
             client_name = "CPF Válido"
