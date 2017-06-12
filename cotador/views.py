@@ -4,33 +4,34 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 # Create your views here.
 
-def cpf(request):
+def cpfcnpj_request(cpf_cnpj):
+    if validate_cpf(cpf_cnpj):
+        try:
+            insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
+            return insured
+        except:
+            
+    
     if request.method == "POST":
         client_cpf = request.POST['cpf']
         if validateCPF(client_cpf):
             client_name = "CPF Válido"
         else:
             client_name = "Inválido"
-    client_name = "WE"
-    return render(request, 'cotador/cotador.html', {
-        'products': products,
-        'cities': cities,
-        'client_name': client_name
-        })
-
 
 def quotation(request):
     pages = ["Cotação"]
     subpage = 1
     products = Product.objects.filter(active=1)
     if request.method == "POST":
-        client_cpf = request.POST['cpf']
-        if validateCPF(client_cpf):
-            client_name = "CPF Válido"
-            cpf_error = False
-        else:
-            client_name = "Inválido"
-            cpf_error = True
+        cpf_cnpj = request.POST['cpf_cnpj']
+        try:
+            if cpf_request(cpf_cnpj):
+                insured_name = "CPF Válido"
+                cpf_error = False
+            else:
+                client_name = "Inválido"
+                cpf_error = True
 
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
@@ -65,18 +66,7 @@ def case_nc(x, city, product):
     else:
         return 0
 
-def validateCPF(cpfNumber):
-        """
-        Method to validate a brazilian cpfNumber number
-        Based on Pedro Werneck source avaiable at
-        www.PythonBrasil.com.br
-
-        Tests:
-        >>> print cpfNumber().validate('91289037736')
-        True
-        >>> print cpfNumber().validate('91289037731')
-        False
-        """
+def validate_cpf(cpfNumber):
         cpfNumber_invalidos = [11*str(i) for i in range(10)]
         if cpfNumber in cpfNumber_invalidos:
             return False
