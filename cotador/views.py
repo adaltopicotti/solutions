@@ -10,7 +10,7 @@ def cpfcnpj_request(cpf_cnpj):
         return insured.name
     else:
         insured = get_insured_name(cpf_cnpj)
-        return insured.nome
+        return insured
             
 
 def quotation(request):
