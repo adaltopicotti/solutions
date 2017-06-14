@@ -10,7 +10,8 @@ def cpfcnpj_request(cpf_cnpj):
             insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
             return insured.name
         except:
-            insured = get_insured_name(cpf_cnpj)  
+            insured = get_insured_name(cpf_cnpj)
+            return insured.nome
     else:
         return "Documento Inválido"
             
