@@ -25,6 +25,7 @@ def quotation(request):
             insured_error = ""
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
+                'cpf_cnpj': cpf_cnpj,
                 'insured_name': insured.nome
                 })
         except:
