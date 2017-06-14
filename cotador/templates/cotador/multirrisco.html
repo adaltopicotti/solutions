@@ -46,8 +46,8 @@
       <div class="row">
         <div class="col-md-2">
           <label for="lbl_cpf">CPF:</label>
-          {% if cpf %}
-            <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf}}" onchange="validar()">
+          {% if cpf_cnpj %}
+            <input name="cpf" id="cpf" type="text" class="form-control" value="{{cpf_cnpj}}" onchange="validar()">
           {% else %}
             <input name="cpf" id="cpf" type="text" class="form-control" onchange="validar()">
             {% if cpf_error == True %}
