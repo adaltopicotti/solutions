@@ -9,7 +9,8 @@ def cpfcnpj_request(cpf_cnpj):
         insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
         return insured.name
     else:
-        return "Documento Inválido"
+        insured = get_insured_name(cpf_cnpj)
+        return insured.nome
             
 
 def quotation(request):
