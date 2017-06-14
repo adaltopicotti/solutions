@@ -12,6 +12,8 @@ def cpfcnpj_request(cpf_cnpj):
         except:
             person_result = get_insured_name(cpf_cnpj)
             return person_result
+    else:
+        return "Documento Inválido"
             
 
 def quotation(request):
@@ -27,7 +29,7 @@ def quotation(request):
                 'pages': pages,
                 'products': products,
                 'cpf_cnpj': cpf_cnpj,
-                'insured_name': insured.nome
+                'insured_name': insured.name
                 })
         except:
             insured_error = "Documento Inválido"
