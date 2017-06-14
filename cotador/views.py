@@ -24,7 +24,7 @@ def quotation(request):
                 'pages': pages,
                 'products': products,
                 'cpf_cnpj': cpf_cnpj,
-                'insured_name': insured.name
+                'insured_name': insured
                 })
         except:
             insured_error = "Documento Inválido"
