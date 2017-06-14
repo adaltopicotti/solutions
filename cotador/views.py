@@ -27,7 +27,7 @@ def quotation(request):
                 'pages': pages,
                 'insured_name': insured.nome
                 })
-        except
+        except:
             insured_error = "Documento Inválido"
 
     return render(request, 'cotador/multirrisco.html', {
