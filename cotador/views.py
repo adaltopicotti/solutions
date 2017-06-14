@@ -6,11 +6,13 @@ from .models import *
 
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
-        insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-        return insured.name
+        try:
+            insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
+            return insured.name
+        except:
+            insured = get_insured_name(cpf_cnpj)  
     else:
-        insured = get_insured_name(cpf_cnpj)
-        return insured
+        return "Documento Inválido"
             
 
 def quotation(request):
