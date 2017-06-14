@@ -6,12 +6,7 @@ from .models import *
 
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
-        try:
-            insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-            return insured
-        except:
-            person_result = get_insured_name(cpf_cnpj)
-            return person_result
+        return "Documento Válido"
     else:
         return "Documento Inválido"
             
@@ -23,7 +18,7 @@ def quotation(request):
     if request.method == "POST":
         cpf_cnpj = request.POST['cpf_cnpj']
         try:
-            insured = cpf_request(cpf_cnpj)
+            insured = cpfcnpj_request(cpf_cnpj)
             insured_error = ""
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
