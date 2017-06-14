@@ -6,7 +6,8 @@ from .models import *
 
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
-        return "Documento Válido"
+        insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
+        return insured.name
     else:
         return "Documento Inválido"
             
