@@ -11,7 +11,7 @@ def cpfcnpj_request(cpf_cnpj):
             return insured.name
         except:
             insured = get_insured_name(cpf_cnpj)
-            return insured.nome
+            return "ok"
     else:
         return "Documento Inválido"
             
