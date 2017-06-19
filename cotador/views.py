@@ -9,7 +9,7 @@ def cpfcnpj_request(cpf_cnpj):
         try:
             if Insured.objects.get(cpf_cnpj=cpf_cnpj):
                 insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-                 return insured.name
+                return insured.name
             else:
                 return "now"
            
