@@ -8,7 +8,7 @@ def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
         try:
             insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-            if insured.name:
+            if insured.name != 0:
                 return insured.name
             else:
                 return "now"
