@@ -6,16 +6,11 @@ from .models import *
 
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
-        try:
-            insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-            if insured.cpf_cnpj == cpf_cnpj:
-                return insured.name
-            else:
-                return "now"
-           
-        except:
-            insured = get_insured_name(cpf_cnpj)
-            return "ok"
+        insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
+        if insured.cpf_cnpj == cpf_cnpj:
+            return insured.name
+        else:
+            return "now"
     else:
         return "Documento Inválido"
             
