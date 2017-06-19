@@ -21,17 +21,14 @@ def quotation(request):
     products = Product.objects.filter(active=1)
     if request.method == "POST":
         cpf_cnpj = request.POST['cpf_cnpj']
-        try:
-            insured = cpfcnpj_request(cpf_cnpj)
-            insured_error = ""
-            return render(request, 'cotador/multirrisco.html', {
-                'pages': pages,
-                'products': products,
-                'cpf_cnpj': cpf_cnpj,
-                'insured_name': insured
-                })
-        except:
-            insured_error = "Documento Inválido"
+        insured = cpfcnpj_request(cpf_cnpj)
+        insured_error = ""
+        return render(request, 'cotador/multirrisco.html', {
+            'pages': pages,
+            'products': products,
+            'cpf_cnpj': cpf_cnpj,
+            'insured_name': insured
+            })
 
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
