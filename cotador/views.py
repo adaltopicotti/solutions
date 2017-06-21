@@ -11,8 +11,6 @@ def pdc(request):
     humidity = 60
     wind = 14
     today = date.today()
-    if request.method == "GET":
-        temperature = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
         'temp': temperature,
         'rain': rain,
