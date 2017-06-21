@@ -8,17 +8,19 @@
 </script>
 
 {% if temp %}
-<div class="col-md-4 pull-center">
-<table class="table">
-    <tr class="active">
-        <td>
-            <div class="col-md-3">
-                <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" wdith="75px" height="75px"/>
-            </div>
-            <h2 class="title-extra-large-5 md-title-extra-large-3 xs-title-extra-large-4"><a>{{temp}} °C </a></h2>
-        </td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-md-4 pull-center">
+        <table class="table">
+            <tr class="active">
+                <td>
+                    <div class="col-md-3">
+                        <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" wdith="75px" height="75px"/>
+                    </div>
+                    <h2 class="title-extra-large-5 md-title-extra-large-3 xs-title-extra-large-4"><a>{{temp}} °C </a></h2>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 {% endif %}
 <br><br>
