@@ -10,28 +10,18 @@
 {% if temp %}
 <div class="row">
     <div class="col-md-6 pull-center">
-        <table class="table">
-            <tr>
-                <td>
-                    <div class="col-md-6">
-                        <label>
-                            <h2 style="font-size: 25px"><a>Maringá - PR</a></h1>
-                            <h2 style="font-size: 15px"><a>{{today}}</a></h1>
-                        </label>
-                    </div>      
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="col-md-2">
-                        <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png"/>
-                    </div>
-                    <div class="col-md-4">
-                        <h1 style="font-size: 35px"><a>{{temp}}°C</a></h1>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div class="col-md-6">
+            <label>
+                <h2 style="font-size: 25px"><a>Maringá - PR</a></h1>
+                <h2 style="font-size: 15px"><a>{{today}}</a></h1>
+            </label>
+        </div>      
+        <div class="col-md-2">
+            <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png"/>
+        </div>
+        <div class="col-md-4">
+            <h1 style="font-size: 35px"><a>{{temp}}°C</a></h1>
+        </div>
     </div>
 </div>
 {% endif %}
