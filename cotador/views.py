@@ -6,6 +6,7 @@ from datetime import *
 # Create your views here.
 
 def pdc(request):
+    temperature = 26
     rain = 0
     humidity = 60
     wind = 14
