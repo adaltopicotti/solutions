@@ -6,33 +6,21 @@
         document.getElementById("cotador").submit();
     };
 </script>
-<!--
-<div class="row">
-    <div class="col-md-12">
-        <p><img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/sky.jpg"/></p>
-    </div>
--->
-    {% if temp %}
-    <div class="col-md-4 pull-center">
-    <table class="table">
-        <tr class="active">
-            <td>
-                <div class="col-md-3">
-                    <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" wdith="75px" height="75px"/>
-                </div>
-                <h2 class="title-extra-large-5 md-title-extra-large-3 xs-title-extra-large-4">MY JOB.</h2>
-                <div class="col-md-3">
-                    <a margin-top="10px">{{temp}} °C </a>
-                </div>
-            </td>
-            <td>
-                
-            </td>
-        </tr>
-    </table>
-    </div>
-    {% endif %}
+
+{% if temp %}
+<div class="col-md-4 pull-center">
+<table class="table">
+    <tr class="active">
+        <td>
+            <div class="col-md-3">
+                <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" wdith="75px" height="75px"/>
+            </div>
+            <h2 class="title-extra-large-5 md-title-extra-large-3 xs-title-extra-large-4"><a>{{temp}} °C </a></h2>
+        </td>
+    </tr>
+</table>
 </div>
+{% endif %}
 <br><br>
 <form method="GET" name="cotador" id="cotador" class="post-form">{% csrf_token %}
     <div class="form-group">
