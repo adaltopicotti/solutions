@@ -6,33 +6,34 @@
         document.getElementById("cotador").submit();
     };
 </script>
-
-<div class="offset-1">
 <div class="row">
-    <div class="col-md-6 col-xs-12">
-        <label>
-            <h2 style="font-size: 25px;color: #428bca">Maringá - PR</h1>
-            <h2 style="font-size: 15px;color: #428bca">{{today}}</h1>
-        </label>
+    <div class="md-offset-1">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <label>
+                    <h2 style="font-size: 25px;color: #428bca">Maringá - PR</h1>
+                    <h2 style="font-size: 15px;color: #428bca">{{today}}</h1>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-xs-3">    
+                <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" align="center"/>          
+            </div>
+            <div class="col-md-2 col-xs-3 col-xs-pull-1">
+                <label style="font-size: 35px; color: #428bca">
+                    {{temp}}°C
+                </label>
+            </div>
+            <div class="col-md-3 col-xs-6 col-md-offset-1 col-xs-offset-1">
+                <label style="font-size: 15px">
+                    Chuva: {{rain}}%<br>
+                    Umidade: {{humidity}}%<br>
+                    Vento: {{wind}}km/h
+                </label>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-2 col-xs-3">    
-        <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png" align="center"/>          
-    </div>
-    <div class="col-md-2 col-xs-3 col-xs-pull-1">
-        <label style="font-size: 35px; color: #428bca">
-            {{temp}}°C
-        </label>
-    </div>
-    <div class="col-md-3 col-xs-6 col-md-offset-1 col-xs-offset-1">
-        <label style="font-size: 15px">
-            Chuva: {{rain}}%<br>
-            Umidade: {{humidity}}%<br>
-            Vento: {{wind}}km/h
-        </label>
-    </div>
-</div>
 </div>
 <br><br>
 <!--
