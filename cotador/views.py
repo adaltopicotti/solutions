@@ -5,7 +5,17 @@ from .models import *
 from datetime import *
 # Create your views here.
 
+def manage_icon(rain):
+    elfi rain <= 15 and rain > 0:
+        icon = 2
+    elif rain <= 45:
+        icon = 4
+    else:
+        icon = 1
+    return icon
+
 def pdc(request):
+    icon = 1
     temperature = 23
     rain = 0
     humidity = 60
@@ -17,13 +27,15 @@ def pdc(request):
         humidity = request.GET['H']
         wind = request.GET['W']
         return render(request, 'pdc/pdc.html', {
-        'temp': temperature,
-        'rain': rain,
-        'humidity': humidity,
-        'wind': wind,
-        'today': today,
-        })
+            'icon': icon,
+            'temp': temperature,
+            'rain': rain,
+            'humidity': humidity,
+            'wind': wind,
+            'today': today,
+            })
     return render(request, 'pdc/pdc.html', {
+        'icon': icon,
         'temp': temperature,
         'rain': rain,
         'humidity': humidity,
