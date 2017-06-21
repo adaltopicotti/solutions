@@ -22,22 +22,20 @@ def pdc(request):
     wind = 14
     today = date.today()
     if request.method == "GET":
-        try:
-            temperature = request.GET['T']
-            rain = request.GET['R']
-            humidity = request.GET['H']
-            wind = request.GET['W']
-            icon = manage_icon(int(rain))
-            return render(request, 'pdc/pdc.html', {
-                'icon': icon,
-                'temp': temperature,
-                'rain': rain,
-                'humidity': humidity,
-                'wind': wind,
-                'today': today,
-                })
-        except:
-            icon=1
+        temperature = request.GET['T']
+        rain = request.GET['R']
+        humidity = request.GET['H']
+        wind = request.GET['W']
+        icon = manage_icon(int(rain))
+        return render(request, 'pdc/pdc.html', {
+            'icon': icon,
+            'temp': temperature,
+            'rain': rain,
+            'humidity': humidity,
+            'wind': wind,
+            'today': today,
+            })
+    else:
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
         'temp': temperature,
