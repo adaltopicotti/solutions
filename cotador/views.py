@@ -4,6 +4,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 # Create your views here.
 
+def pdc(request):
+    if request.method == "GET":
+        r = self.request.GET.get('temperature')
+    return render(request, 'cotador/pdc.html', {
+        'temperature': r,
+        })
+
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
         try:
