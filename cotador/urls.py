@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.quotation, name='quotation'),
+    url(r'^pdc/$', views.pdc, name='pdc'),
 ]
