@@ -2,7 +2,7 @@
 # -*-coding: utf-8 -*
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
-from datetime import date
+from datetime import *
 # Create your views here.
 
 def pdc(request):
