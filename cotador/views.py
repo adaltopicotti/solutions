@@ -7,15 +7,15 @@ from datetime import *
 
 def manage_icon(rain):
     if rain <= 15 and rain > 0:
-        icon = 2
+        icon = '2'
     elif rain <= 45:
-        icon = 4
+        icon = '4'
     else:
-        icon = 1
+        icon = '1'
     return icon
 
 def pdc(request):
-    icon = 1
+    icon = '1'
     temperature = 23
     rain = 0
     humidity = 60
@@ -26,7 +26,7 @@ def pdc(request):
         rain = request.GET['R']
         humidity = request.GET['H']
         wind = request.GET['W']
-        icon = str(manage_icon(rain))
+        icon = manage_icon(rain)
         return render(request, 'pdc/pdc.html', {
             'icon': icon,
             'temp': temperature,
