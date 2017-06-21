@@ -11,7 +11,7 @@ def pdc(request):
         r = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
         'temp': r,
-        'today': today.strftime('%A %d. %B %Y'),
+        'today': today.month,
         })
 
 def cpfcnpj_request(cpf_cnpj):
