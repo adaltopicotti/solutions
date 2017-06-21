@@ -6,13 +6,12 @@ from datetime import *
 # Create your views here.
 
 def pdc(request):
-    datenow = date.today()
-    today = datenow + timedelta(2)
+    today = date.today()
     if request.method == "GET":
         r = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
         'temp': r,
-        'today': today,
+        'today': today.strftime('%A %d. %B %Y'),
         })
 
 def cpfcnpj_request(cpf_cnpj):
