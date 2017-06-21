@@ -6,8 +6,8 @@ from datetime import date
 # Create your views here.
 
 def pdc(request):
-    date = date.today()
-    today = today.weekday() + timedelta(2)
+    datenow = date.today()
+    today = datenow.weekday() + timedelta(2)
     if request.method == "GET":
         r = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
