@@ -26,7 +26,7 @@ def pdc(request):
         rain = request.GET['R']
         humidity = request.GET['H']
         wind = request.GET['W']
-        icon = manage_icon(rain)
+        icon = manage_icon(int(rain))
         return render(request, 'pdc/pdc.html', {
             'icon': icon,
             'temp': temperature,
