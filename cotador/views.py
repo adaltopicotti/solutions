@@ -6,11 +6,17 @@ from datetime import *
 # Create your views here.
 
 def pdc(request):
+    rain = 0
+    humidity = 60
+    wind = 14
     today = date.today()
     if request.method == "GET":
-        r = request.GET.get('temperature')
+        temperature = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
-        'temp': r,
+        'temp': temperature,
+        'rain': rain,
+        'humidity': humidity,
+        'wind': wind,
         'today': today,
         })
 
