@@ -2,13 +2,16 @@
 # -*-coding: utf-8 -*
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from datetime import date
 # Create your views here.
 
 def pdc(request):
+    today = date.today()
     if request.method == "GET":
         r = request.GET.get('temperature')
     return render(request, 'pdc/pdc.html', {
         'temp': r,
+        'today': today.weekday(),
         })
 
 def cpfcnpj_request(cpf_cnpj):
