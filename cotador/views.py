@@ -15,11 +15,11 @@ def manage_icon(rain):
     return icon
 
 def pdc(request):
-    icon = '1'
     temperature = 23
     rain = 0
     humidity = 60
     wind = 14
+    icon = manage_icon(int(rain))  
     today = date.today()
     if request.method == "GET":
         temperature = request.GET['T']
