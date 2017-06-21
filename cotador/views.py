@@ -7,7 +7,7 @@ from .models import *
 def pdc(request):
     if request.method == "GET":
         r = request.GET.get('temperature')
-    return render(request, 'cotador/pdc.html', {
+    return render(request, 'pdc/pdc.html', {
         'temp': r,
         })
 
