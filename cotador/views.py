@@ -21,6 +21,17 @@ def pdc(request):
     wind = 14
     icon = manage_icon(int(rain))  
     today = date.today()
+    return render(request, 'pdc/pdc.html', {
+        'icon': icon,
+        'temp': temperature,
+        'rain': rain,
+        'humidity': humidity,
+        'wind': wind,
+        'today': today,
+        })
+
+def add(request):
+    today = date.today()
     if request.method == "GET":
         temperature = request.GET['T']
         rain = request.GET['R']
@@ -35,14 +46,6 @@ def pdc(request):
             'wind': wind,
             'today': today,
             })
-    return render(request, 'pdc/pdc.html', {
-        'icon': icon,
-        'temp': temperature,
-        'rain': rain,
-        'humidity': humidity,
-        'wind': wind,
-        'today': today,
-        })
 
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
