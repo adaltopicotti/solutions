@@ -6,7 +6,7 @@ from .models import *
 
 def pdc(request):
     if request.method == "GET":
-        r = self.request.GET.get('temperature')
+        r = request.GET.get('temperature')
     return render(request, 'cotador/pdc.html', {
         'temperature': r,
         })
