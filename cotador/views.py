@@ -35,7 +35,6 @@ def pdc(request):
             'wind': wind,
             'today': today,
             })
-    else:
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
         'temp': temperature,
