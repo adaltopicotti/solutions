@@ -8,7 +8,7 @@ def pdc(request):
     if request.method == "GET":
         r = request.GET.get('temperature')
     return render(request, 'cotador/pdc.html', {
-        'temperature': r,
+        'temp': r,
         })
 
 def cpfcnpj_request(cpf_cnpj):
