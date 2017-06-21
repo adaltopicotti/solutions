@@ -9,7 +9,7 @@
 
 {% if temp %}
 <div class="row">
-    <div class="col-md-3 pull-center">
+    <div class="col-md-6 pull-center">
         <table class="table">
             <tr>
                 <td>
@@ -23,10 +23,12 @@
             </tr>
             <tr class="active">
                 <td>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <img class="img-responsive img-rounded" src="http://project-zeta.one/meteorologia/pdc/weather/weather_icon1.png"/>
                     </div>
-                    <h1 style="font-size: 65px"><a>{{temp}}°C</a></h1>
+                    <div class="col-md-4">
+                        <h1 style="font-size: 65px"><a>{{temp}}°C</a></h1>
+                    </div>
                 </td>
             </tr>
         </table>
