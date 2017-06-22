@@ -10,6 +10,8 @@ def manage_icon(rain):
         icon = '2'
     elif rain <= 45:
         icon = '4'
+    elif rain = 0:
+        icon = '1'
     else:
         icon = '1'
     return icon
