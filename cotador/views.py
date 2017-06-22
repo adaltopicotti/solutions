@@ -9,6 +9,7 @@ from django.http import JsonResponse, HttpResponse
 
 def test(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
+    icon = manage_icon(int(weather.rain))
     return render(request, 'pdc/test.html', {'weater': weather})
 
 def get_wheater(lat,lon):
@@ -42,22 +43,12 @@ def manage_icon(rain):
     return icon
 
 def pdc(request):
-    weather = get_wheater('-23,4252777777777','-51,93861111111111')
-    temperature = round(weather['main']['temp'] - 273.15,2)
-    rain = 0
-    clouds = weather['clouds']['all']
-    humidity = weather['main']['humidity']
-    wind = round(weather['wind']['speed'] * 3.599997)
+    weather = get_wheater('-23,4252777777777','-51,93861111111111'))
     icon = manage_icon(int(rain))  
     today = date.today()
     
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
-        'temp': temperature,
-        'rain': rain,
-        'clouds': clouds,
-        'humidity': humidity,
-        'wind': wind,
         'today': today,
         'weather': weather
         })
