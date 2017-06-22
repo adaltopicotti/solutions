@@ -32,7 +32,7 @@ def pdc(request):
     wind = 3
     icon = manage_icon(int(rain))  
     today = date.today()
-    weather = get_wheater'-23,4252777777777','-51,93861111111111')
+    weather = get_wheater('-23,4252777777777','-51,93861111111111')
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
         'temp': temperature,
