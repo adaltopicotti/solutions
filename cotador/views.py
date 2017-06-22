@@ -10,7 +10,7 @@ from django.http import JsonResponse, HttpResponse
 def test(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
     icon = manage_icon(int(weather['rain']))
-    return render(request, 'pdc/test.html', {'weater': weather})
+    return render(request, 'pdc/test.html', {'weather': weather})
 
 def get_wheater(lat,lon):
     key = 'fab2e031061742d03b32b8ee6da17203'
