@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponse
 # Create your views here.
 
 def test(request):
-    weather = {"temp":293.15}
+    weather = get_wheater('-23,4252777777777','-51,93861111111111')
     return render(request, 'pdc/test.html', {'weater': weather})
 
 def get_wheater(lat,lon):
@@ -16,7 +16,18 @@ def get_wheater(lat,lon):
     url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + key
     result = requests.get(url)
     weather = result.json()
-    return weather
+    temp = round(weather['main']['temp'] - 273.15,2)
+    rain = 0
+    clouds = weather['clouds']['all']
+    humidity = weather['main']['humidity']
+    wind = round(weather['wind']['speed'] * 3.599997)
+    result = {
+        "temp":temp,
+        "rain":rain,
+        "humidity":humidity,
+        "clouds":clouds,
+        "wind":wind}
+    return result
 
 
 def manage_icon(rain):
