@@ -5,6 +5,15 @@ from .models import *
 from datetime import *
 # Create your views here.
 
+
+def get_wheater(lat,lon):
+    key = 'fab2e031061742d03b32b8ee6da17203'
+    url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + key
+    result = requests.get(url)
+    weather = result.json()
+    return weather
+
+
 def manage_icon(rain):
     if rain == 0:
         icon = '1'
@@ -23,6 +32,7 @@ def pdc(request):
     wind = 3
     icon = manage_icon(int(rain))  
     today = date.today()
+    weather = get_wheater'-23,4252777777777','-51,93861111111111')
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
         'temp': temperature,
@@ -30,6 +40,7 @@ def pdc(request):
         'humidity': humidity,
         'wind': wind,
         'today': today,
+        'weather': weather
         })
 
 def add(request):
