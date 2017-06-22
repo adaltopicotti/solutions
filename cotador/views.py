@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponse
 # Create your views here.
 
 def test(request):
-    weather = [{"temp":293.15}]
+    weather = {"temp":293.15}
     return render(request, 'pdc/test.html', {'weater': weather})
 
 def get_wheater(lat,lon):
