@@ -37,7 +37,7 @@ def pdc(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
-        'temp': weather.main.temp,
+        'temp': weather['main'].['temp'],
         'rain': rain,
         'humidity': humidity,
         'wind': wind,
