@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^$', views.quotation, name='quotation'),
     url(r'^pdc/$', views.pdc, name='pdc'),
     url(r'^pdc/add/$', views.add, name='add'),
-    url(r'^pdc/test/$', views.test, name='test'),
+    url(r'^pdc/weather/$', views.weather, name='weather'),
 ]
