@@ -43,10 +43,9 @@ def manage_icon(rain):
     return icon
 
 def pdc(request):
-    weather = get_wheater('-23,4252777777777','-51,93861111111111'))
+    weather = get_wheater('-23,4252777777777','-51,93861111111111')
     icon = manage_icon(int(weather.rain))  
     today = date.today()
-    
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
         'today': today,
