@@ -8,16 +8,7 @@ from django.http import JsonResponse, HttpResponse
 # Create your views here.
 
 def test(request):
-    return render(request, 'pdc/test.html', {
-        'icon': icon,
-        'temp': temperature,
-        'rain': rain,
-        'clouds': clouds,
-        'humidity': humidity,
-        'wind': wind,
-        'today': today,
-        'weather': weather
-        })
+    return render(request, 'pdc/test.html', {})
 
 def get_wheater(lat,lon):
     key = 'fab2e031061742d03b32b8ee6da17203'
