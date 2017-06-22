@@ -11,7 +11,7 @@ def weather(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
     icon = manage_icon(int(weather['rain']))
     today = date.today()
-    return render(request, 'pdc/test.html', {'weather': weather, 'icon': icon, 'today': today})
+    return render(request, 'pdc/weather.html', {'weather': weather, 'icon': icon, 'today': today})
 
 def get_wheater(lat,lon):
     key = 'fab2e031061742d03b32b8ee6da17203'
