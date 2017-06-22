@@ -33,7 +33,7 @@ def pdc(request):
     rain = 0
     clouds = weather['clouds']['all']
     humidity = weather['main']['humidity']
-    wind = round(weather['wind']['speed'] * 1.60934,2)
+    wind = round(weather['wind']['speed'] * 3.599997)
     icon = manage_icon(int(rain))  
     today = date.today()
     
