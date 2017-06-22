@@ -6,12 +6,12 @@ from datetime import *
 # Create your views here.
 
 def manage_icon(rain):
-    if rain <= 15 and rain > 0:
-        icon = '2'
-    elif rain <= 45:
-        icon = '4'
-    elif rain = 0:
+    if rain = 0:
         icon = '1'
+    elif (rain <= 15) and (rain > 0):
+        icon = '2'
+    elif (rain <= 45) and (rain > 0):
+        icon = '4'
     else:
         icon = '1'
     return icon
