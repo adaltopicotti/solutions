@@ -30,7 +30,8 @@ def manage_icon(rain):
 def pdc(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
     temperature = weather['main']['temp'] - 273,15
-    rain = weather['rain']['3h']
+    rain = 0
+    clouds = weather['clouds']
     humidity = weather['main']['humidity']
     wind = weather['wind']['speed'] * 1,60934
     icon = manage_icon(int(rain))  
@@ -40,6 +41,7 @@ def pdc(request):
         'icon': icon,
         'temp': temperature,
         'rain': rain,
+        'clouds': clouds,
         'humidity': humidity,
         'wind': wind,
         'today': today,
