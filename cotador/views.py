@@ -29,11 +29,11 @@ def manage_icon(rain):
 
 def pdc(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
-    temperature = weather['main']['temp'] - 273,15
+    temperature = round(weather['main']['temp'] - 273,15,2)
     rain = 0
-    clouds = weather['clouds']
+    clouds = weather['clouds']['all']
     humidity = weather['main']['humidity']
-    wind = weather['wind']['speed'] * 1,60934
+    wind = round(weather['wind']['speed'] * 1,60934,2)
     icon = manage_icon(int(rain))  
     today = date.today()
     
