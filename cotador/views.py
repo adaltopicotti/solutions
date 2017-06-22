@@ -17,10 +17,10 @@ def manage_icon(rain):
     return icon
 
 def pdc(request):
-    temperature = 23
+    temperature = 14
     rain = 0
-    humidity = 60
-    wind = 14
+    humidity = 94
+    wind = 3
     icon = manage_icon(int(rain))  
     today = date.today()
     return render(request, 'pdc/pdc.html', {
