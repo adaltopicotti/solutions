@@ -29,7 +29,7 @@
             </button>
       <!-- Begin Subpage 1 -->
       <div class="row">
-        <div class="col-md-3 col-xs-8">
+        <div class="col-md-3">
           <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
           <select name="product" class="form-control" >
             {% for product in products %}
@@ -44,7 +44,7 @@
       </div>
       <br>
       <div class="row">
-        <div class="col-md-2 col-xs-8">
+        <div class="col-md-2">
           <label for="lbl_cpf">CPF:</label>
           {% if cpf_cnpj %}
             <input name="cpf_cnpj" id="cpf_cnpj" type="text" class="form-control" value="{{cpf_cnpj}}" onchange="validar()">
@@ -55,7 +55,7 @@
             {% endif %}
           {% endif %}
         </div>
-        <div class="col-md-3 col-xs-8">
+        <div class="col-md-3">
           <label for="lbl_insured_name">Nome do Segurado:</label>
           {% if insured_name %}
             <input name="insured_name" type="text" class="form-control" value="{{insured_name}}" disabled>
