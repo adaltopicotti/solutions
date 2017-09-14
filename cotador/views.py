@@ -45,7 +45,7 @@ def manage_icon(rain):
 
 def pdc(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
-    icon = manage_icon(int(weather['rain']))  
+    icon = manage_icon(int(weather['rain']))
     today = date.today()
     return render(request, 'pdc/pdc.html', {
         'icon': icon,
@@ -79,12 +79,13 @@ def cpfcnpj_request(cpf_cnpj):
             return "now"
     else:
         return "Documento Inválido"
-            
+
 
 def quotation(request):
     pages = ["Cotação"]
     subpage = 1
     products = Product.objects.filter(active=1)
+    ufs = Uf.objects.all()
     if request.method == "POST":
         cpf_cnpj = request.POST['cpf_cnpj']
         insured = cpfcnpj_request(cpf_cnpj)
@@ -93,7 +94,8 @@ def quotation(request):
             'pages': pages,
             'products': products,
             'cpf_cnpj': cpf_cnpj,
-            'insured_name': insured
+            'insured_name': insured,
+            'ufs': ufs
             })
 
     return render(request, 'cotador/multirrisco.html', {
