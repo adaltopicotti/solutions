@@ -101,6 +101,7 @@ def quotation(request):
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
         'products': products
+        'ufs': ufs
         })
 
 
