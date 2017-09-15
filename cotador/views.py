@@ -77,7 +77,7 @@ def cpfcnpj_request(cpf_cnpj):
             return pre_register.name
         except:
             cpf_info = get_cpf_name(cpf_cnpj)
-            return cpf_info
+            return cpf_info.[1]
     else:
         return "Documento Inválido"
 
@@ -95,7 +95,7 @@ def quotation(request):
             'pages': pages,
             'products': products,
             'cpf_cnpj': cpf_cnpj,
-            'insured_name': insured.nome,
+            'insured_name': insured,
             'ufs': ufs
             })
 
