@@ -72,7 +72,7 @@
           <div class="row">
             <div class="col-md-3">
               <label for="lbl_uf">Estado</label>
-              <select name="uf" class="form-control" >
+              <select name="uf" class="form-control" onchange="validar()">
                 {% for uf in ufs %}
                 {% if uf.id == uf_sel %}
                 <option value="{{uf.id}}" selected>{{uf.name}}</option>
