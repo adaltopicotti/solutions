@@ -76,7 +76,7 @@ def cpfcnpj_request(cpf_cnpj):
             pre_register = PreRegister.objects.get(cpf_cnpj=cpf_cnpj)
             return pre_register.name
         except:
-            cpf_info = get_cpf_name(cpf_cnpj)
+            #cpf_info = get_cpf_name(cpf_cnpj) only for localhost
             return "Aqui vai um nome"
     else:
         return "Documento Inválido"
