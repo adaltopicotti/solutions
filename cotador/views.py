@@ -105,7 +105,7 @@ def quotation(request):
             'products': products,
             'cpf_cnpj': cpf_cnpj,
             'insured_name': insured,
-            'ufs': ufs
+            'ufs': ufs,
             'ind': ind
             })
 
