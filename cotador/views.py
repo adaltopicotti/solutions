@@ -162,7 +162,7 @@ def validate_cpf(cpfNumber):
         return bool( cpfNumber == selfcpfNumber )
 
 def get_cpf_name(cpf_cnpj):
-    key = 'e6cc0c8ac7fddca7d4a7bb45bcb2a813'
+    key = '5d7a6e8dcda547e285708b2780cc87c7'
     url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpf_cnpj
     result = requests.get(url)
     cpfJson = result.json()
