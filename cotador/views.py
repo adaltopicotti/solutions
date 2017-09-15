@@ -90,10 +90,10 @@ def quotation(request):
     ufs = Uf.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
-        if validator == 1:
+        if validator == '1':
           insured = 1
           indicator = 2
-        elif validator == 2:
+        elif validator == '2':
           insured = 2
           indicator = 3
         else:
