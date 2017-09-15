@@ -91,10 +91,10 @@ def quotation(request):
         validator = request.POST['ind']
         if validator == 1:
           insured = 1
-          ind = validator +1
+          indicaotr = validator + 1
         elif validator == 2:
           insured = 2
-          ind = validator +1
+          indicator = validator + 1
         else:
           insured = 3
         cpf_cnpj = request.POST['cpf_cnpj']
@@ -106,7 +106,7 @@ def quotation(request):
             'cpf_cnpj': cpf_cnpj,
             'insured_name': insured,
             'ufs': ufs,
-            'ind': ind
+            'ind': indicator
             })
 
     return render(request, 'cotador/multirrisco.html', {
