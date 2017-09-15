@@ -91,10 +91,10 @@ def quotation(request):
         validator = request.POST['ind']
         if validator == 1:
           insured = 1
-          indicator = validator + 1
+          indicator = 2
         elif validator == 2:
           insured = 2
-          indicator = validator + 1
+          indicator = 3
         else:
           insured = 3
         cpf_cnpj = request.POST['cpf_cnpj']
