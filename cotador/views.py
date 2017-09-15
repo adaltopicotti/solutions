@@ -76,7 +76,8 @@ def cpfcnpj_request(cpf_cnpj):
             pre_register = PreRegister.objects.get(cpf_cnpj=cpf_cnpj)
             return pre_register.name
         except:
-            return "now"
+            cpf_info = get_cpf_name(cpf_cnpj)
+            return cpf_info
     else:
         return "Documento Inválido"
 
@@ -94,7 +95,7 @@ def quotation(request):
             'pages': pages,
             'products': products,
             'cpf_cnpj': cpf_cnpj,
-            'insured_name': insured,
+            'insured_name': insured.nome,
             'ufs': ufs
             })
 
@@ -160,9 +161,9 @@ def validate_cpf(cpfNumber):
             cpfNumber.append( f )
         return bool( cpfNumber == selfcpfNumber )
 
-def get_insured_name(cpf_cnpj):
+def get_cpf_name(cpf_cnpj):
     key = 'e6cc0c8ac7fddca7d4a7bb45bcb2a813'
-    url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpfNumber
+    url = "https://api.cpfcnpj.com.br/" + key + "/1/json/" + cpf_cnpj
     result = requests.get(url)
     cpfJson = result.json()
     return cpfJson
