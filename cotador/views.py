@@ -88,17 +88,13 @@ def quotation(request):
     products = Product.objects.filter(active=1)
     ufs = Uf.objects.all()
     if request.method == "POST":
-        x = request.POST['ind']
-        switch(x){
-           case 1:
-             insured = "Numero 1;
-                break;
-           case 2:
-               insured = "Numero 2;
-                break;
-           default:
-               insured = "Número fora do itervalo pedido";
-        }
+        validator = request.POST['ind']
+        if validator = 1:
+          insured = 1
+        elif validator = 2:
+          insured = 2
+        else:
+          insured = 3
         cpf_cnpj = request.POST['cpf_cnpj']
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
@@ -108,6 +104,7 @@ def quotation(request):
             'cpf_cnpj': cpf_cnpj,
             'insured_name': insured,
             'ufs': ufs
+            'ind':validator+1
             })
 
     return render(request, 'cotador/multirrisco.html', {
