@@ -73,8 +73,8 @@ def add(request):
 def cpfcnpj_request(cpf_cnpj):
     if validate_cpf(cpf_cnpj):
         try:
-            insured = Insured.objects.get(cpf_cnpj=cpf_cnpj)
-            return insured.name
+            pre_register = PreRegister.objects.get(cpf_cnpj=cpf_cnpj)
+            return pre_register.name
         except:
             return "now"
     else:

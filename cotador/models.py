@@ -9,6 +9,10 @@ class MaritalStatus(models.Model):
     def __str__(self):
         return self.marital
 
+class PreRegister(models.Model):
+    cpf_cnpj = models.CharField(max_length=14, null = False)
+    name = models.CharField(max_length=50, null=False)
+
 class Insured(models.Model):
     cpf_cnpj = models.CharField(max_length=14, null = False)
     name = models.CharField(max_length=50, null=False)
@@ -20,7 +24,7 @@ class Insured(models.Model):
     marital_status = models.ForeignKey('cotador.MaritalStatus')
     def __str__(self):
         return self.name
-    
+
 
 class Uf(models.Model):
     sigla = models.CharField(max_length=2, null=False)
