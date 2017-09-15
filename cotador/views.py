@@ -85,6 +85,7 @@ def cpfcnpj_request(cpf_cnpj):
 def quotation(request):
     pages = ["Cotação"]
     subpage = 1
+    indicator = 1
     products = Product.objects.filter(active=1)
     ufs = Uf.objects.all()
     if request.method == "POST":
@@ -113,7 +114,7 @@ def quotation(request):
         'pages': pages,
         'products': products,
         'ufs': ufs,
-        'validator': 1
+        'validator': indicator
         })
 
 
