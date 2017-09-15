@@ -88,7 +88,7 @@ def quotation(request):
     products = Product.objects.filter(active=1)
     ufs = Uf.objects.all()
     if request.method == "POST":
-        validator = request.POST['validator']
+        validator = request.POST['ind']
         switch(validator){
            case 1:
              insured = "Numero 1;
