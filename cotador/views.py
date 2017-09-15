@@ -77,7 +77,7 @@ def cpfcnpj_request(cpf_cnpj):
             return pre_register.name
         except:
             cpf_info = get_cpf_name(cpf_cnpj)
-            return cpf_info['nome']
+            return "Aqui vai um nome"
     else:
         return "Documento Inválido"
 
