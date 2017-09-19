@@ -85,7 +85,7 @@
           <br>
           <!-- BEGIN ROW 3-->
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
               <label for="lbl_city">Nível de Cobertura</label>
               <select name="lvl_cob" class="form-control" onchange="validar()">
                 {% for city in cities %}
@@ -93,8 +93,14 @@
                 {% endfor %}
               </select>
             </div>
-            <div class="col-md-2">
-              <label for="lbl_insured_name">Área:</label>
+            <div class="col-md-1">
+              <label for="lbl_area">Área:</label>
+                <input name="area" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1">
+              <label for="lbl_price_sack">Preço da Saca:</label>
                 <input name="area" type="text" class="form-control">
               </div>
             </div>
