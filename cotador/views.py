@@ -92,9 +92,9 @@ def quotation(request):
     ufs = Uf.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
-        uf_sel = request.POST['uf']
+        uf_sel = str(request.POST['uf'])
         cpf_cnpj = request.POST['cpf_cnpj']
-        insured = str(uf_sel)
+        insured = uf_sel
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
         return render(request, 'cotador/multirrisco.html', {
