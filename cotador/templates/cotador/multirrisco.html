@@ -77,7 +77,6 @@
               <select name="uf" class="form-control" onchange="validar()">
                 {% for uf in ufs %}
                 <option value="{{uf.id}}" {% if uf.id == uf_sel %}selected {% endif% }>{{uf.name}}</option>
-                {% endif %}
                 {% endfor %}
               </select>
             </div>
