@@ -108,7 +108,7 @@ def quotation(request):
             'validator': indicator,
             'cities': cities,
             'uf_sel': int(uf_sel),
-            'lvl_cobs: lvl_cobs
+            'lvl_cobs': lvl_cobs
             })
     else:
             cities = City.objects.filter(uf=1)
