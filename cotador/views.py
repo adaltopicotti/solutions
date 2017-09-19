@@ -118,7 +118,8 @@ def quotation(request):
         'products': products,
         'ufs': ufs,
         'validator': indicator,
-        'cities': cities
+        'cities': cities,
+        'lvl_cobs': lvl_cobs
         })
 
 
