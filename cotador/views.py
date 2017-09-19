@@ -92,7 +92,7 @@ def quotation(request):
     ufs = Uf.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
-        uf_sel = str(request.POST['uf'])
+        uf_sel = int(request.POST['uf'])
         cpf_cnpj = request.POST['cpf_cnpj']
         insured = uf_sel
         #insured = cpfcnpj_request(cpf_cnpj)
