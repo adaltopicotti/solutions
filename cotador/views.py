@@ -90,6 +90,7 @@ def quotation(request):
     indicator = 1
     products = Product.objects.filter(active=1)
     ufs = Uf.objects.all()
+    lvl_cobs = Lvl_cob.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
         uf_sel = request.POST['uf']
@@ -106,7 +107,8 @@ def quotation(request):
             'ufs': ufs,
             'validator': indicator,
             'cities': cities,
-            'uf_sel': int(uf_sel)
+            'uf_sel': int(uf_sel),
+            'lvl_cobs: lvl_cobs
             })
     else:
             cities = City.objects.filter(uf=1)
