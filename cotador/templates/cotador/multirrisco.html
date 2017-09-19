@@ -88,7 +88,7 @@
             <div class="col-md-2">
               <label for="lbl_city">Nível de Cobertura</label>
               <select name="lvl_cob" class="form-control" onchange="validar()">
-                {% for city in cities %}
+                {% for lvl_cob in lvl_cobs %}
                   <option value="{{lvl_cob.id}}" {% if lvl_cob.id == lvl_cob_sel %}selected {% endif %}>{{lvl_cob.name}}</option>
                 {% endfor %}
               </select>
