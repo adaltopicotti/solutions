@@ -86,7 +86,7 @@
                 {% for city in cities %}
                 {% if city.id == city_sel %}
                 <option value="{{city.id}}" selected>{{city.name}}</option>
-                {% else %}{% endif %}
+                {% else %}
                 <option value="{{city.id}}">{{city.name}}</option>
                 {% endif %}
                 {% endfor %}
