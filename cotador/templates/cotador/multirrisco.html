@@ -36,12 +36,9 @@
               <label for="lbl_product">Produto: {{product}} - Page: {{index}}</label>
               <select name="product" class="form-control" >
                 {% for product in products %}
-                {% if product.id == product_sel %}
-                <option value="{{product.id}}" selected>{{product.name}}</option>
-                {% else %}{% endif% }
-                <option value="{{product.id}}">{{product.name}}</option>
-                {% endif %}
+                  <option value="{{product.id}}" {% if product.id == product_sel %}selected {% endif %}>{{product.name}}</option>
                 {% endfor %}
+              </select>
             </div>
           </div>
           <br>
@@ -60,11 +57,7 @@
             </div>
             <div class="col-md-3">
               <label for="lbl_insured_name">Nome do Segurado:</label>
-              {% if insured_name %}
-                <input name="insured_name" type="text" class="form-control" value="{{insured_name}}" disabled>
-              {% else %}
-                <input name="insured_name" type="text" class="form-control">
-              {% endif %}
+                <input name="insured_name" type="text" class="form-control"{% if insured_name %} value="{{insured_name}}" disabled {% endif %}>
             </div>
           </div>
           <!-- END ROW 1-->
@@ -83,16 +76,30 @@
               <label for="lbl_city">Município</label>
               <select name="city" class="form-control" onchange="validar()">
                 {% for city in cities %}
-                {% if city.id == city_sel %}
-                <option value="{{city.id}}" selected>{{city.name}}</option>
-                {% else %}
-                <option value="{{city.id}}">{{city.name}}</option>
-                {% endif %}
+                  <option value="{{city.id}}" {% if city.id == city_sel %}selected {% endif %}>{{city.name}}</option>
                 {% endfor %}
               </select>
             </div>
           </div>
           <!-- END ROW 2-->
+          <br>
+          <!-- BEGIN ROW 3-->
+          <div class="row">
+            <div class="col-md-2">
+              <label for="lbl_city">Nível de Cobertura</label>
+              <select name="lvl_cob" class="form-control" onchange="validar()">
+                {% for city in cities %}
+                  <option value="{{lvl_cob.id}}" {% if lvl_cob.id == lvl_cob_sel %}selected {% endif %}>{{lvl_cob.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="lbl_insured_name">Área:</label>
+                <input name="area" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <!-- END ROW 3-->
         </div>
         <!-- End Subpage 1 -->
       </form>

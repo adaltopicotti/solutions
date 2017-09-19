@@ -92,7 +92,8 @@ def quotation(request):
     ufs = Uf.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
-        uf_sel = int(request.POST['uf'])
+        uf_sel = request.POST['uf']
+        cities = City.objects.filter(uf=uf_sel)
         cpf_cnpj = request.POST['cpf_cnpj']
         insured = uf_sel
         #insured = cpfcnpj_request(cpf_cnpj)
@@ -105,14 +106,17 @@ def quotation(request):
             'ufs': ufs,
             'validator': indicator,
             'cities': cities,
-            'uf_sel': uf_sel
+            'uf_sel': int(uf_sel)
             })
+    else:
+            cities = City.objects.filter(uf=1)
 
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
         'products': products,
         'ufs': ufs,
-        'validator': indicator
+        'validator': indicator,
+        'cities': cities
         })
 
 
