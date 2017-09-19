@@ -90,7 +90,7 @@ def quotation(request):
     indicator = 1
     products = Product.objects.filter(active=1)
     ufs = Uf.objects.all()
-    lvl_cobs = Lvl_cob.objects.all()
+    lvl_cobs = Lvl_Cob.objects.all()
     if request.method == "POST":
         validator = request.POST['ind']
         uf_sel = request.POST['uf']
