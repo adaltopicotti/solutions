@@ -76,10 +76,7 @@
               <label for="lbl_uf">Estado</label>
               <select name="uf" class="form-control" onchange="validar()">
                 {% for uf in ufs %}
-                {% if uf.id == uf_sel %}
-                <option value="{{uf.id}}" selected>{{uf.name}}</option>
-                {% else %}{% endif% }
-                <option value="{{uf.id}}">{{uf.name}}</option>
+                <option value="{{uf.id}}" {% if uf.id == uf_sel %}selected {% endif% }>{{uf.name}}</option>
                 {% endif %}
                 {% endfor %}
               </select>
