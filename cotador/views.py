@@ -105,6 +105,14 @@ def quotation(request):
             sack_price = request.POST['sack_price']
             nc_sel = request.POST['lvl_cob']
             quotation_res = calc(float(sack_price), float(area), city_sel, 1, nc_sel)
+            total_cost = quotation_res[0]
+            final_cost = quotation_res[1]
+            subv_fed = quotation_res[2]
+            subv_est = quotation_res[3]
+            is_total = quotation_res[4]
+            prod_esp = quotation_res[5]
+            prod_seg = quotation_res[6]
+            tax = quotation_res[7]
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
