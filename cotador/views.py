@@ -99,7 +99,7 @@ def quotation(request):
         insured = uf_sel
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
-        if (request.POST['area'] and request.POST['sack_price']):
+        if (request.POST['area'] != ''):
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
