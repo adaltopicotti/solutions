@@ -103,7 +103,7 @@ def quotation(request):
         if (request.POST['area'] != '') and (request.POST['sack_price'] != ''):
             area = request.POST['area']
             sack_price = request.POST['sack_price']
-            calc(sack_price, area, city_sel, 1, 2)
+            calc(sack_price, area, city_sel, 1, 0.65)
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
