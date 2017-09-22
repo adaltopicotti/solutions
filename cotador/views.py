@@ -113,7 +113,7 @@ def quotation(request):
             prod_esp = quotation_res[5]
             prod_seg = quotation_res[6]
             tax = quotation_res[7]
-            quotation_number = 0000123
+            quotation_number = '00123'
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
