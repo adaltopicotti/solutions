@@ -130,7 +130,7 @@ def quotation(request):
                 'lvl_cobs': lvl_cobs
                 })
     else:
-            cities = City.objects.filter(uf=1)
+            cities = City.objects.filter(uf=16)
 
     return render(request, 'cotador/multirrisco.html', {
         'pages': pages,
