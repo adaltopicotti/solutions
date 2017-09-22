@@ -99,17 +99,30 @@ def quotation(request):
         insured = uf_sel
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
-        return render(request, 'cotador/multirrisco.html', {
-            'pages': pages,
-            'products': products,
-            'cpf_cnpj': cpf_cnpj,
-            'insured_name': insured,
-            'ufs': ufs,
-            'validator': indicator,
-            'cities': cities,
-            'uf_sel': int(uf_sel),
-            'lvl_cobs': lvl_cobs
-            })
+        if (request.POST['area'] and request.POST['sack_price']):
+            return render(request, 'cotador/multirrisco.html', {
+                'pages': pages,
+                'products': products,
+                'cpf_cnpj': cpf_cnpj,
+                'insured_name': 'ok',
+                'ufs': ufs,
+                'validator': indicator,
+                'cities': cities,
+                'uf_sel': int(uf_sel),
+                'lvl_cobs': lvl_cobs
+                })
+        else:
+            return render(request, 'cotador/multirrisco.html', {
+                'pages': pages,
+                'products': products,
+                'cpf_cnpj': cpf_cnpj,
+                'insured_name': insured,
+                'ufs': ufs,
+                'validator': indicator,
+                'cities': cities,
+                'uf_sel': int(uf_sel),
+                'lvl_cobs': lvl_cobs
+                })
     else:
             cities = City.objects.filter(uf=1)
 
