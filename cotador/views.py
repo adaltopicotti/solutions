@@ -138,6 +138,7 @@ def quotation(request):
         'pages': pages,
         'products': products,
         'ufs': ufs,
+        'uf_sel': 16,
         'validator': indicator,
         'cities': cities,
         'lvl_cobs': lvl_cobs
