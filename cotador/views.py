@@ -113,6 +113,7 @@ def quotation(request):
             prod_esp = quotation_res[5]
             prod_seg = quotation_res[6]
             tax = quotation_res[7]
+            quotation_number = 0000123
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
@@ -125,7 +126,16 @@ def quotation(request):
                 'city_sel': int(city_sel),
                 'lvl_cobs': lvl_cobs,
                 'area': area,
-                'sack_price': sack_price
+                'sack_price': sack_price,
+                'total_cost': total_cost,
+                'final_cost': final_cost,
+                'subv_fed': subv_fed,
+                'subv_est': subv_est,
+                'is_total': is_total,
+                'prod_esp': prod_esp,
+                'prod_seg': prod_seg,
+                'tax': tax,
+                'quotation_number': quotation_number
                 })
         else:
             return render(request, 'cotador/multirrisco.html', {
