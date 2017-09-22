@@ -104,12 +104,12 @@ def quotation(request):
             area = request.POST['area']
             sack_price = request.POST['sack_price']
             nc_sel = request.POST['lvl_cob']
-            calc(float(sack_price), float(area), city_sel, 1, nc_sel)
+            quotation_res = calc(float(sack_price), float(area), city_sel, 1, nc_sel)
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
                 'cpf_cnpj': cpf_cnpj,
-                'insured_name': 'ok',
+                'insured_name': quotation_res[1],
                 'ufs': ufs,
                 'validator': indicator,
                 'cities': cities,
