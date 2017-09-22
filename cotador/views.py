@@ -101,9 +101,9 @@ def quotation(request):
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
         if (request.POST['area'] != '') and (request.POST['sack_price'] != ''):
-            area = request.POST['area']
-            sack_price = request.POST['sack_price']
-            calc(sack_price, area, city_sel, 1, 0.65)
+            area = float(request.POST['area'])
+            sack_price = float(request.POST['sack_price'])
+            calc(sack_price, area, city_sel, 1, 2)
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
