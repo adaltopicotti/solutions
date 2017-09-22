@@ -113,6 +113,7 @@ def quotation(request):
                 'validator': indicator,
                 'cities': cities,
                 'uf_sel': int(uf_sel),
+                'city_sel': int(city_sel),
                 'lvl_cobs': lvl_cobs,
                 'area': area,
                 'sack_price': sack_price
@@ -127,6 +128,7 @@ def quotation(request):
                 'validator': indicator,
                 'cities': cities,
                 'uf_sel': int(uf_sel),
+                'city_sel': int(city_sel),
                 'lvl_cobs': lvl_cobs
                 })
     else:
