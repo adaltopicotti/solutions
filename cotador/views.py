@@ -95,11 +95,15 @@ def quotation(request):
         validator = request.POST['ind']
         uf_sel = request.POST['uf']
         cities = City.objects.filter(uf=uf_sel)
+        city_sel = request.POST['city']
         cpf_cnpj = request.POST['cpf_cnpj']
-        insured = uf_sel
+        insured = city_sel
         #insured = cpfcnpj_request(cpf_cnpj)
         insured_error = ""
         if (request.POST['area'] != '') and (request.POST['sack_price'] != ''):
+            area = request.POST['area']
+            sack_price = request.POST['sack_price']
+            
             return render(request, 'cotador/multirrisco.html', {
                 'pages': pages,
                 'products': products,
@@ -109,7 +113,9 @@ def quotation(request):
                 'validator': indicator,
                 'cities': cities,
                 'uf_sel': int(uf_sel),
-                'lvl_cobs': lvl_cobs
+                'lvl_cobs': lvl_cobs,
+                'area': area,
+                'sack_price': sack_price
                 })
         else:
             return render(request, 'cotador/multirrisco.html', {
