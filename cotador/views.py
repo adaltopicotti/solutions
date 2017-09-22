@@ -83,6 +83,7 @@ def cpfcnpj_request(cpf_cnpj):
 
 
 def quotation(request):
+    quotation_number = ''
     pages = ["Cotação"]
     insured = ""
     cities = ""
