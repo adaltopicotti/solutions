@@ -44,6 +44,8 @@ class Quotation(models.Model):
     subv_fed =  models.FloatField(null=False)
     subv_est =  models.FloatField(null=False)
     final_cost =  models.FloatField(null=False)
+    created_date = models.DateTimeField(
+            default=timezone.now)
     def __str__(self):
         quot_inf = str(self.protocol) + " - " + str(self.client)
         return quot_inf
