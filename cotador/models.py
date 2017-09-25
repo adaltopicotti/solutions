@@ -10,8 +10,10 @@ class MaritalStatus(models.Model):
         return self.marital
 
 class PreRegister(models.Model):
-    cpf_cnpj = models.CharField(max_length=14, null = False)
+    cpf_cnpj = models.CharField(max_length=14, null = False, unique=True)
     name = models.CharField(max_length=50, null=False)
+    def __str__(self):
+        return self.name
 
 class Insured(models.Model):
     cpf_cnpj = models.CharField(max_length=14, null = False)
@@ -24,6 +26,27 @@ class Insured(models.Model):
     marital_status = models.ForeignKey('cotador.MaritalStatus')
     def __str__(self):
         return self.name
+
+
+class Quotation(models.Model):
+    protocol = models.CharField(max_length=10, null=False)
+    client = models.ForeignKey('cotador.PreRegister')
+    product = models.ForeignKey('cotador.Product')
+    uf = models.ForeignKey('cotador.Uf')
+    city = models.ForeignKey('cotador.City')
+    lvl_cob = models.ForeignKey('cotador.Lvl_Cob')
+    area = models.FloatField(null=False)
+    sack_price = models.FloatField(null=False)
+    prod_esp =  models.FloatField(null=False)
+    prod_seg =  models.FloatField(null=False)
+    total_is =  models.FloatField(null=False)
+    total_cost =  models.FloatField(null=False)
+    subv_fed =  models.FloatField(null=False)
+    subv_est =  models.FloatField(null=False)
+    final_cost =  models.FloatField(null=False)
+    def __str__(self):
+        quot_inf = str(self.protocol) + " - " + str(self.client)
+        return quot_inf
 
 
 class Uf(models.Model):
