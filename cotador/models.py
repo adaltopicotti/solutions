@@ -28,6 +28,7 @@ class Insured(models.Model):
         return self.name
 
 
+
 class Quotation(models.Model):
     protocol = models.CharField(max_length=10, null=False)
     client = models.ForeignKey('cotador.PreRegister')

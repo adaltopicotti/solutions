@@ -2,6 +2,7 @@
 # -*-coding: utf-8 -*
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from .forms import *
 from datetime import *
 import json, requests
 from django.http import JsonResponse, HttpResponse
@@ -81,6 +82,10 @@ def cpfcnpj_request(cpf_cnpj):
     else:
         return "Documento Inválido"
 
+
+def quotation_new(request):
+    form = PostForm()
+    return render(request, 'cotador/quotation_edit.html', {'form': form})
 
 def quotation(request):
     pages = ["Cotação"]
