@@ -53,6 +53,8 @@ def pdc(request):
         'today': today,
         'weather': weather
         })
+
+#pdc/add?T=24.0&H=69.9&P=930.91&I=26.83&Hi=36&Ti=28"
 def add(request):
     today = date.today()
     if request.method == "GET":
