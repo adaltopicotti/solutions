@@ -80,9 +80,8 @@ def add(request):
            'wind': wind
         }
         form = PostWeather(request.GET)
-        if form.is_valid():
-            form.date = timezone.now()
-            form.save()
+        form.date = timezone.now()
+        form.save()
         return render(request, 'pdc/pdc.html', {
             'icon': icon,
             'temp': temperature,
