@@ -73,7 +73,7 @@ def pdc_add(request):
 def add(request):
     today = date.today()
     if request.method == "GET":
-         if form.is_valid():
+        if form.is_valid():
             post = form.save(commit=False)
             post = PostWeather(request.GET)
             post.temperature = request.GET['T']
@@ -82,7 +82,6 @@ def add(request):
             post.wind = request.GET['W']
             post.date = timezone.now()
             post.save()
-        icon = manage_icon(int(form.rain))
         return render(request, 'pdc/pdc.html', {
             'icon': icon,
             'temp': temperature,
