@@ -74,7 +74,7 @@ def add(request):
     today = date.today()
     teste = "Not"
     if request.method == "GET":
-        form = PostWeather(request.GET)
+        form = PostWeather()
         if form.is_valid():
             post = form.save(commit=False)
             post.temperature = request.GET['T']
