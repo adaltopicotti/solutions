@@ -72,24 +72,25 @@ def pdc_add(request):
 #pdc/add?T=24.0&H=69.9&P=930.91&I=26.83&Hi=36&Ti=28"
 def add(request):
     today = date.today()
+    teste = "Not"
     if request.method == "GET":
         form = PostWeather(request.GET)
         if form.is_valid():
             post = form.save(commit=False)
-
             post.temperature = request.GET['T']
             post.rain = request.GET['R']
             post.humidity = request.GET['H']
             post.wind = request.GET['W']
             post.date = timezone.now()
             post.save()
+            teste = "Yes"
         return render(request, 'pdc/pdc.html', {
-            'temp': 0,
+            'temp': teste
             'rain': 0,
             'humidity': 0,
             'wind': 0,
             'weather': 0,
-            'today': 0,
+            'today': today
             })
 
 
