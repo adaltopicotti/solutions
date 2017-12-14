@@ -2,6 +2,18 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
+class Weather(models.Model):
+    temperature = models.FloatField()
+    humidity = models.FloatField()
+    wind = models.FloatField()
+    rain = models.FloatField()
+    date = models.DateTimeField(
+            default=timezone.now)
+
+    def __str__(self):
+        return self.date
+
+			
 
 class MaritalStatus(models.Model):
     marital = models.CharField(max_length=50, null=False)
