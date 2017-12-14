@@ -1,5 +1,13 @@
 from django import forms
-from .models import Quotation
+from .models import Quotation, Weather
+
+
+
+class PostWeather(forms.ModelForm):
+	class Meta:
+		model = Weather
+		fields = ('temperature', 'humidity', 'wind', 'rain')
+
 
 class PostForm(forms.ModelForm):
 
