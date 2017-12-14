@@ -98,7 +98,7 @@ def add(request):
             'humidity': 0,
             'wind': 0,
             'weather': 0,
-            'today': post.date
+            'today': "teste"
             })
 
 
