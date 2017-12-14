@@ -86,11 +86,11 @@ def add(request):
             teste = "Yes"
         return render(request, 'pdc/pdc.html', {
             'temp': teste,
-            'rain': 0,
+            'rain': post.rain,
             'humidity': 0,
             'wind': 0,
             'weather': 0,
-            'today': today
+            'today': post.date
             })
 
 
