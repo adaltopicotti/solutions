@@ -6,6 +6,7 @@ from .forms import *
 from datetime import *
 import json, requests
 from django.http import JsonResponse, HttpResponse
+from django.utils import timezone
 # Create your views here.
 
 def weather(request):
@@ -80,6 +81,7 @@ def add(request):
            'wind': wind
         }
         form = PostWeather(request.GET)
+        post.date = timezone.now()
         form.save()
         return render(request, 'pdc/pdc.html', {
             'icon': icon,
