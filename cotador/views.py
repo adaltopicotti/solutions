@@ -75,31 +75,31 @@ def add(request):
     teste = "Not"
     if request.method == "GET":
         form = PostWeather()
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.temperature = request.GET['T']
-            post.rain = request.GET['R']
-            post.humidity = request.GET['H']
-            post.wind = request.GET['W']
-            post.date = timezone.now()
-            post.save()
-            teste = "Yes"
-            return render(request, 'pdc/pdc.html', {
-                'temp': teste,
-                'rain': post.rain,
-                'humidity': 0,
-                'wind': 0,
-                'weather': 0,
-                'today': post.date
-                })
+        
+        post = form.save(commit=False)
+        post.temperature = request.GET['T']
+        post.rain = request.GET['R']
+        post.humidity = request.GET['H']
+        post.wind = request.GET['W']
+        post.date = timezone.now()
+        post.save()
+        teste = "Yes"
         return render(request, 'pdc/pdc.html', {
             'temp': teste,
-            'rain': 0,
+            'rain': post.rain,
             'humidity': 0,
             'wind': 0,
             'weather': 0,
-            'today': "teste"
+            'today': post.date
             })
+    return render(request, 'pdc/pdc.html', {
+        'temp': teste,
+        'rain': 0,
+        'humidity': 0,
+        'wind': 0,
+        'weather': 0,
+        'today': "teste"
+        })
 
 
 
