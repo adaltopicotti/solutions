@@ -81,7 +81,6 @@ def add(request):
         }
         form = PostWeather(request.GET)
         if form.is_valid():
-            post = form.save(commit=False)
             post.date = timezone.now()
             post.save()
         return render(request, 'pdc/pdc.html', {
