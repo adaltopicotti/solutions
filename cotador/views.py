@@ -94,7 +94,7 @@ def add(request):
                 })
         return render(request, 'pdc/pdc.html', {
             'temp': teste,
-            'rain': post.rain,
+            'rain': 0,
             'humidity': 0,
             'wind': 0,
             'weather': 0,
