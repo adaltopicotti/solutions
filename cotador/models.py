@@ -11,7 +11,7 @@ class Weather(models.Model):
             default=timezone.now)
 
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 			
 
