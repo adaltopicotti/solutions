@@ -73,22 +73,12 @@ def pdc_add(request):
 def add(request):
     today = date.today()
     if request.method == "GET":
-        temperature = request.GET['T']
-        rain = request.GET['R']
-        humidity = request.GET['H']
-        wind = request.GET['W']
         icon = manage_icon(int(rain))
-        weather = {
-           'temperature' : temperature,
-           'humidity' : humidity,
-           'rain' : rain,
-           'wind': wind
-        }
         form = PostWeather(request.GET)
-        post.temperature = request.GET['T']
-        post.rain = request.GET['R']
-        post.humidity = request.GET['H']
-        post.wind = request.GET['W']
+        form.temperature = request.GET['T']
+        form.rain = request.GET['R']
+        form.humidity = request.GET['H']
+        form.wind = request.GET['W']
         form.date = timezone.now()
         form.save()
         return render(request, 'pdc/pdc.html', {
