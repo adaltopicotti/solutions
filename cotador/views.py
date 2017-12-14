@@ -73,9 +73,10 @@ def pdc_add(request):
 def add(request):
     today = date.today()
     if request.method == "GET":
+        form = PostWeather(request.GET)
         if form.is_valid():
             post = form.save(commit=False)
-            post = PostWeather(request.GET)
+
             post.temperature = request.GET['T']
             post.rain = request.GET['R']
             post.humidity = request.GET['H']
