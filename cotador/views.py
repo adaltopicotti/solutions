@@ -80,7 +80,7 @@ def add(request):
            'rain' : rain,
            'wind': wind
         }
-        form = weather
+        form = request.GET
         form.date = timezone.now()
         form.save()
         return render(request, 'pdc/pdc.html', {
