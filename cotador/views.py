@@ -84,7 +84,6 @@ def add(request):
             post.date = timezone.now()
             post.save()
         return render(request, 'pdc/pdc.html', {
-            'icon': icon,
             'temp': temperature,
             'rain': rain,
             'humidity': humidity,
