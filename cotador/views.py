@@ -85,7 +85,7 @@ def add(request):
             post.save()
             teste = "Yes"
         return render(request, 'pdc/pdc.html', {
-            'temp': teste
+            'temp': teste,
             'rain': 0,
             'humidity': 0,
             'wind': 0,
