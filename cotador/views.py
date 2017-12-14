@@ -61,6 +61,10 @@ def pdc_add(request):
         form = PostWeather(request.GET)
         if form.is_valid():
             post = form.save(commit=False)
+            post.temperature = request.GET['T']
+            post.rain = request.GET['R']
+            post.humidity = request.GET['H']
+            post.wind = request.GET['W']
             post.date = timezone.now()
             post.save()
     return "Concluido"
@@ -81,6 +85,10 @@ def add(request):
            'wind': wind
         }
         form = PostWeather(request.GET)
+        post.temperature = request.GET['T']
+        post.rain = request.GET['R']
+        post.humidity = request.GET['H']
+        post.wind = request.GET['W']
         form.date = timezone.now()
         form.save()
         return render(request, 'pdc/pdc.html', {
