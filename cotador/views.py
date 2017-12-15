@@ -13,7 +13,7 @@ from django.utils import timezone
 def weather_data(request):
     weather_data = Weather.objects.filter(date__lte=timezone.now()).order_by('-date')
     recent_weather_data = Weather.objects.filter(date__lte=timezone.now()).order_by('-date')[:3]
-    return render(request, 'pdc/view.html', {'weather_data': weather_data, 'recent_weather_data': recent_weather_data})
+    return render(request, 'pdc/view.html', {'weather_datas': weather_data, 'recent_weather_datas': recent_weather_data})
 
 
 def weather(request):
