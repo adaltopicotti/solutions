@@ -4,13 +4,14 @@
 <div class"panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
         <h1><a href="/">Cadastrados</a></h1>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Temperatura</th>
               <th scope="col">Umidade</th>
+              <th scope="col">Chuva</th>
               <th scope="col">Inclusão</th>
             </tr>
           </thead>
@@ -19,6 +20,7 @@
             <tr>
               <td>{{weather_data.temperature}}</a></td>
               <td>{{ weather_data.humidity }}</td>
+              <td>{{ weather_data.rain }}</td>
               <td> {{ weather_data.date|date:"d/m/Y" }}</td>
             </tr>
             {% endfor %}
