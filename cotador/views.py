@@ -9,6 +9,13 @@ from django.http import JsonResponse, HttpResponse
 from django.utils import timezone
 # Create your views here.
 
+
+def weather_data(request):
+    weather_data = Weather.objects.filter(date__lte=timezone.now()).order_by('-date')
+    recent_weather_data = Weather.objects.filter(date__lte=timezone.now()).order_by('-date')[:3]
+    return render(request, 'pdc/view.html', {'weather_data': weather_data, 'recent_weather_data': recent_weather_data})
+
+
 def weather(request):
     weather = get_wheater('-23,4252777777777','-51,93861111111111')
     icon = manage_icon(int(weather['rain']))
