@@ -21,7 +21,7 @@
               <td>{{weather_data.temperature}}</a></td>
               <td>{{ weather_data.humidity }}</td>
               <td>{{ weather_data.rain }}</td>
-              <td> {{ weather_data.date|date:"d/m/Y"  }} {{weather_data.date|time:"TIME_FORMAT"}}</td>
+              <td> {{ weather_data.date|date:"d/m/Y"  }} - {{weather_data.date|time:"TIME_FORMAT"}}</td>
             </tr>
             {% endfor %}
           </tbody>
